@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessages extends Migration
+class CreateSales extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,16 @@ class CreateMessages extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('from')->references('id')->on('users');
-            $table->integer('to')->references('id')->on('users');
-            $table->string('message');
+            $table->integer('userId')->unsigned();
+            $table->integer('productId')->unsigned();
             $table->timestamps();
+
+            $table->foreign('userId')->references('id')->on('users');
+            $table->foreign('productId')->references('id')->on('products');
+
+
         });
     }
 
@@ -29,6 +33,6 @@ class CreateMessages extends Migration
      */
     public function down()
     {
-        Schema::drop('messages');
+        Schema::drop('sales');
     }
 }

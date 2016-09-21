@@ -14,10 +14,13 @@ class CreateProductComments extends Migration
     public function up()
     {
         Schema::create('productComments', function (Blueprint $table) {
-            $table->integer('userId')->references('id')->on('users');
-            $table->integer('productId')->references('id')->on('products');
+            $table->integer('userId')->unsigned();
+            $table->integer('productId')->unsigned();
             $table->string('comment');
             $table->timestamps();
+
+            $table->foreign('userId')->references('id')->on('users');
+            $table->foreign('productId')->references('id')->on('products');
         });
     }
 

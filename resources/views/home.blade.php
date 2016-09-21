@@ -5,48 +5,10 @@
 <body>
     @include('header')
 
-<div class="md-modal md-effect-9 form" id="modal-9">
-    <div class="md-content">
-        <div class="panel-heading">
-            <div class="row closeModal"><span class="md-close"><i class="fa fa-times" aria-hidden="true"></i></span></div>
-            <ul class="tab-group">
-                <li class="tab active"><a href="#login">Log In</a></li>
-                <li class="tab"><a href="#signup">Sign Up</a></li>
-            </ul>
-        </div>
-        <div class="panel-body">
-            <div class="tab-content">
-                
-                @include('login')
-                
-                @include('signup')
-            </div>
-        </div>
-    </div>
-</div>
-<div class="md-overlay"></div>
+    @include('loginForm')
 
 <div class="container-fluid bodyContainer">
-    <div class="searchTab">
-      <div id="wrap">
-          <input class="search" id="searchId" name="search" type="text" placeholder="What're we looking for ?">
-          <input id="search_submit" value="Rechercher" type="submit" >
-      </div>
-    </div>
-    <!-- Modal -->
-  <div class="modal fullscreen-modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="modalClose close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title text-center" id="myModalLabel">Search Results</h4>
-        </div>
-        <div class="modal-body">
-          <div class="loader"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+@include('search')
       
 
     <div id="slideshow">
@@ -164,12 +126,9 @@
 
 
 
-    <script src="js/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script src="js/modernizr.js"></script>
-    <script src="js/loginform.js"></script>
+    
+    @include('scripts')
     <script src="js/index.js"></script>
-    <script src="js/login.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/TweenMax.min.js"></script>
     <script >

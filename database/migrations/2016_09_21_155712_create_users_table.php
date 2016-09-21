@@ -19,9 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('FirstName');
             $table->string('LastName');
             $table->string('password');
-            $table->integer('UserType')->references('id')->on('userType');
+            $table->integer('UserType')->unsigned();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('UserType')->references('id')->on('userTypes');
+
         });
     }
 

@@ -14,12 +14,15 @@ class CreateProductDetails extends Migration
     public function up()
     {
         Schema::create('productDetails', function (Blueprint $table) {
-            $table->integer('id')->references('id')->on('products');
+            $table->integer('id')->unsigned();
             $table->string('description');
             $table->integer('rating');
             $table->integer('ratingNo');
             $table->string('path');
             $table->timestamps();
+
+            $table->foreign('id')->references('id')->on('products');
+
         });
     }
 

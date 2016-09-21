@@ -14,10 +14,14 @@ class CreateUserDetails extends Migration
     public function up()
     {
         Schema::create('userDetails', function (Blueprint $table) {
-            $table->integer('UserId')->references('id')->on('users');
+            $table->integer('UserId')->unsigned();
             $table->string('email');
-            $table->integer('address')->references('id')->on('address');
+            $table->integer('address')->unsigned();
             $table->dateTime('birthdate');
+
+            $table->foreign('UserId')->references('id')->on('users');
+            $table->foreign('address')->references('id')->on('address');
+
         });
     }
 
