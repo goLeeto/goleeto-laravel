@@ -3,3 +3,4 @@
 <script src="js/modernizr.js"></script>
 <script src="js/login.js"></script>
 <script src="js/loginform.js"></script>
+<script src="js/socialanimation.js"></script>
