@@ -20,6 +20,8 @@ class CreateUserDetailsAddress extends Migration
             $table->string('City',50);
             $table->string('Street',50);
             $table->string('Zip',16);
+            $table->timestamps();
+            
         });
     }
 

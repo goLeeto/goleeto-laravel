@@ -253,6 +253,17 @@ if ( typeof define === 'function' && define.amd ) {
 })( window );
 
 
+document.getElementById('usernameS').addEventListener('keyup',function (e){
+
+  if (e.target.value!=='') {
+    document.getElementById('passlbl').innerHTML=e.target.value;
+  }else{
+    document.getElementById('passlbl').innerHTML='UserName<span class="req">*</span>';
+  }
+  
+})   
+
+
 
 
 

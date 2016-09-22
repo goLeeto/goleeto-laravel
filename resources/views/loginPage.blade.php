@@ -1,4 +1,11 @@
-<div class="md-modal md-effect-9 form " id="modal-9">
+<!DOCTYPE html>
+<html>
+    @include('head')
+<body>
+
+
+
+<div class="md-modal md-effect-9 form md-show" id="modal-9">
     <div class="md-content">
         <div class="panel-heading">
             <div class="row closeModal"><span class="md-close"><i class="fa fa-times" aria-hidden="true"></i></span></div>
@@ -22,3 +29,8 @@
 
 @include('scripts')
 
+
+
+
+</body>
+</html>

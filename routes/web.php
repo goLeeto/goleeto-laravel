@@ -22,3 +22,35 @@ Route::get('/products', function() {
 Route::get('/about', function() {
     return view('about',['className' => 'about']);
 });
+
+Route::get('/login', function() {
+    return view('loginPage');
+});
+
+
+
+
+Route::post('/login', 'AuthController@login');
+
+Route::post('/register', 'AuthController@register');
+
+Route::get('/logout', 'AuthController@logOut');
+
+
+Route::get('/get', 'AuthController@getAuth');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
