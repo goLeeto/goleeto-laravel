@@ -23,7 +23,7 @@ class AuthController extends Controller
         
         if (Auth::attempt(['username' => $username, 'password' => $password])) {
 
-            return redirect()->intended('/user');
+            return redirect()->intended('/dashboard');
         }else{
             return redirect()->intended('/');
         }
