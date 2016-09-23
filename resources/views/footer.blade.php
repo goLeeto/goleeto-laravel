@@ -13,7 +13,7 @@
 
     <a href="#">More Info</a>
     <span>|</span>
-    <a href="#">About Us</a>
+    <a href="/about">About Us</a>
     <span>|</span>
     <a href="#">Cookie Policie</a>
   </div>

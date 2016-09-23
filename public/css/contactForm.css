@@ -74,10 +74,12 @@ input.contact:hover:focus::-ms-placeholder, textarea.contact:hover::focus:-ms-pl
   color: #cbc6c1;
 }
 
-body {
+.contactForm {
   font-family: 'Lato', sans-serif;
-  background: #e2dedb;
   color: #b3aca7;
+}
+body{
+  background: #e2dedb;
 }
 
 header {

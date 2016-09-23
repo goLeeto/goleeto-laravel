@@ -14,8 +14,12 @@ class userDetail extends Model
      * @var array
      */
     protected $fillable = [
-        'email','birthdate','UserId'
+        'email','birthdate','UserId','address'
     ];
     protected $table = 'userDetails';
     
+    public function addr(){
+        return $this->belongsTo('\App\Address','address');
+    }
+
 }

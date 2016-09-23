@@ -11,8 +11,8 @@
 
 
 
-	<header>LEARN MORE</header>
-	<form id="form" class="topBefore">
+	<header class="contactForm">LEARN MORE</header>
+	<form id="form" class="topBefore contactForm">
 		<input class="contact" id="name" type="text" placeholder="NAME">
 		<input class="contact" id="email" type="text" placeholder="E-MAIL">
 		<textarea class="contact" id="message" type="text" placeholder="MESSAGE"></textarea>

@@ -21,9 +21,18 @@
                     <li @if ($className == 'about') class='active' @endif>
                       <a href="/about">About Us</a>
                     </li>
+                    @if(!Auth::check())
                     <li >
                       <a href="#" id="login1" class="menu-red md-trigger" data-modal="modal-9">Sign In</a>
                     </li>
+                    @else
+                    <li>
+                      <a href="/dashboard">Dashboard</a>
+                    </li>
+                    <li >
+                      <a href="/logout">Log Out</a>
+                    </li>
+                    @endif
                 </ul>
             </div>
         </div>

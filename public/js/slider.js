@@ -153,7 +153,7 @@ $(function(){
 	var $slides = $(".slide");			//slides 
 	var currentSlide = 0;				//keep track on the current slide
 	var stayTime = 5;				//time the slide stays
-	var slideTime =0.9;				//fade in / fade out time
+	var slideTime =0.7;				//fade in / fade out time
 
 	TweenLite.set($slides.filter(":gt(0)"), {autoAlpha:0,left:'100%'});	//we hide all images after the first one
 	TweenLite.delayedCall(stayTime, nextSlide);				//start the slideshow

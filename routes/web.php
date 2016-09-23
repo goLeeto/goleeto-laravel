@@ -29,15 +29,30 @@ Route::get('/login', function() {
 
 
 
-
 Route::post('/login', 'AuthController@login');
 
 Route::post('/register', 'AuthController@register');
 
-Route::get('/logout', 'AuthController@logOut');
-
-
 Route::get('/get', 'AuthController@getAuth');
+
+
+
+Route::group(['middleware' => 'auth'], function () {
+	
+	Route::get('/logout', 'AuthController@logOut');
+
+	Route::get('/dashboard', 'UserController@dashboard');
+
+	Route::get('/userprofile', 'UserController@profile');
+
+	Route::get('/myproducts', 'UserController@myproducts');
+
+
+	Route::post('/updateinfo', 'UserController@updateinfo');
+
+
+
+});
 
 
 

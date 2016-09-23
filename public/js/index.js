@@ -1,25 +1,5 @@
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 (function(){
   $('.modalClose').click(function() {
     $('#searchModal').removeClass('in');
@@ -28,11 +8,4 @@
 
   });
 })();
-
-
-
-
-
-
-
 
