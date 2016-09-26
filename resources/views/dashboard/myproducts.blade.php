@@ -157,27 +157,42 @@
                                 <h4 class="title">Striped Table</h4>
                                 <p class="category">Here is a subtitle for this table</p>
                             </div>
+                        @if(count($products)>0)
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-striped">
                                     <thead>
                                         <th>id</th>
                                     	<th>name</th>
                                     	<th>price</th>
-                                    	<th>imgPath</th>
+                                    	<th>description</th>
+                                        <th>rating</th>
 
                                     </thead>
                                     <tbody>
+                                        @php ($i=0)
+
                                         @foreach($products as $product)
+
                                         <tr>
                                             <td>{{$product->id}}</td>
                                             <td>{{$product->name}}</td>
                                             <td><span>$</span>{{$product->price}}</td>
-                                            <td>{{$product->imgPath}}</td>
-                                            <td> <span class="changePassword">Edit</span> </td>
+                                            <td> {{$details[$i]['description']}}</td>
+                                            <td> {{ $details[$i]['rating']/$details[$i]['ratingNo'] }}</td>
+                                            <td> <span class="changePassword">Edit</span> | <span class="changePassword">Info</span> </td>
                                         </tr>
+
+                                        @php ($i++)
+
                                         @endforeach
+
                                     </tbody>
                                 </table>
+
+                            @else
+                                Show add product <br>
+                                to do <br>
+                            @endif
 
                             </div>
                         </div>
@@ -281,7 +296,9 @@
                 </div>
             </div>
         </footer>
-
+        @foreach($details as $detail)
+            {{$detail}}
+        @endforeach
 
     </div>
 </div>

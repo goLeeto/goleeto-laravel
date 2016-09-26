@@ -27,14 +27,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
-
+    //Get User Details
 
     public function details(){
         return $this->hasOne('App\UserDetail','UserId');
     }
 
+    //Get User Products
+
     public function products(){
         return $this->hasMany('App\Product','userId');
     }
+
 }

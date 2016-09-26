@@ -29,7 +29,14 @@ class UserController extends Controller
 
     public function myproducts(){
         $products=Auth::user()->products;
-        return view('dashboard.myproducts')->with(['products'=>$products]);
+
+        $details= [];
+
+        foreach ($products as $product) {
+            $details[] = $product->details;
+        }
+
+        return view('dashboard.myproducts')->with(['products'=>$products,'details'=> $details]);
     }
 
 
