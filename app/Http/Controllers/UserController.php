@@ -28,7 +28,8 @@ class UserController extends Controller
     }
 
     public function myproducts(){
-        return view('dashboard.myproducts');
+        $products=Auth::user()->products;
+        return view('dashboard.myproducts')->with(['products'=>$products]);
     }
 
 
@@ -54,28 +55,19 @@ class UserController extends Controller
 
         }elseif (!($address['Street']==$data['street'] && $address['Country'] == $data['country'] && $address['City']==$data['city'] && $address['Zip']==$data['zip']) && $address['id']!=1) {
 
-
-            
             //Need to update address
 
             return redirect('/userprofile');
 
         }else{
-
-
-
             //Need to insert new address
 
             return redirect('/userprofile');
 
         }
-
-
-
         return $data;
-
-        
     }
+
 
 
 

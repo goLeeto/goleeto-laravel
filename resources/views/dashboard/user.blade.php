@@ -40,7 +40,7 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="/" class="simple-text">
                     Creative Tim
                 </a>
             </div>
@@ -157,8 +157,8 @@
                             <div class="content">
                                 <div class="author">
                                   <img class="avatar border-white" src="assets/img/faces/face-2.jpg" alt="..."/>
-                                  <h4 class="title">Chet Faker<br />
-                                     <a href="#"><small>@chetfaker</small></a>
+                                  <h4 class="title">{{$user->FirstName}} {{$user->LastName}}<br />
+                                     <a href="#"><small>@</small><small>{{$user->UserName}}</small></a>
                                   </h4>
                                 </div>
                                 <p class="description text-center">
@@ -186,7 +186,8 @@
                     <div class="col-lg-8 col-md-7">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Edit Profile</h4>
+                                <h4 class="title">Edit Profile</h4> 
+                                <span class="pull-right changePassword" >Change Password</span>
                             </div>
                             <div class="content">
                                 <form method="POST" action="/updateinfo">
@@ -196,13 +197,13 @@
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Username</label>
-                                                <input type="text" class="form-control border-input" placeholder="Username" value="{{$user->UserName}}">
+                                                <input type="text" class="form-control border-input" placeholder="Username" value="{{$user->UserName}}" disabled>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control border-input" placeholder="Email" value="{{$userdetails->email}}">
+                                                <input type="email" class="form-control border-input" placeholder="Email" value="{{$userdetails->email}}" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -211,13 +212,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control border-input" placeholder="Company" value="{{$user->FirstName}}">
+                                                <input type="text" class="form-control border-input" placeholder="Company" value="{{$user->FirstName}}" disabled>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Last Name</label>
-                                                <input type="text" class="form-control border-input" placeholder="Last Name" value="{{$user->LastName}}">
+                                                <input type="text" class="form-control border-input" placeholder="Last Name" value="{{$user->LastName}}" disabled>
                                             </div>
                                         </div>
                                     </div>

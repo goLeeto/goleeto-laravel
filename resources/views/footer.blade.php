@@ -15,7 +15,7 @@
     <span>|</span>
     <a href="/about">About Us</a>
     <span>|</span>
-    <a href="#">Cookie Policie</a>
+    <a href="/cookies">Cookie Policie</a>
   </div>
   <div class="footerExtra">
     <div class="copyright pull-right">

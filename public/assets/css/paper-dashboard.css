@@ -1732,10 +1732,14 @@ textarea.form-control {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_cards\.scss}line{font-family:\0000327}}
   .card .header {
     padding: 20px 20px 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_cards\.scss}line{font-family:\0000327}}
+  .card .header h4,.card .header span {
+    display: inline-block; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_cards\.scss}line{font-family:\0000330}}
   .card .description {
     font-size: 16px;
-    color: #66615b; }
+    color: #66615b;
+    word-break: break-all; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_cards\.scss}line{font-family:\0000335}}
   .card h6 {
     font-size: 12px;

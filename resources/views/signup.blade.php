@@ -38,7 +38,7 @@
                 <label>
                     E-Mail<span class="req">*</span>
                 </label>
-                <input name="email" id="emailS" type="text"required autocomplete="off"/>
+                <input name="email" id="emailS" type="email"required autocomplete="off"/>
             </div>
             <div class="field-wrap">
                 <label>

@@ -27,6 +27,10 @@ Route::get('/login', function() {
     return view('loginPage');
 });
 
+Route::get('/cookies', function() {
+    return view('cookies',['className' => 'none']);
+});
+
 
 
 Route::post('/login', 'AuthController@login');
@@ -49,6 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	Route::post('/updateinfo', 'UserController@updateinfo');
+
 
 
 

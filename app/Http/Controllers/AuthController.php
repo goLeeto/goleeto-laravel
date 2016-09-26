@@ -44,7 +44,7 @@ class AuthController extends Controller
             'email' => $data['email'],
             'birthdate' => $data['birthdate']
         ]);
-        return $user;
+        return redirect()->intended('/dashboard');
     }
 
     public function logOut(){
