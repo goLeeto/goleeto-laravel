@@ -33,8 +33,8 @@ class AuthController extends Controller
 
         $user = \App\User::create([
            'UserName' => $data['username'],
-           'FirstName' => $data['firstname'],
-           'LastName' => $data['lastname'],
+           'FirstName' => ucfirst($data['firstname']),
+           'LastName' => ucfirst($data['lastname']),
            'UserType' => $data['accType'],
            'password' => bcrypt($data['password']),
        ]);

@@ -6,17 +6,25 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\Hash;
+
 use App;
 
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+
+
     public function dashboard(){
 		$user = Auth::user()->details;
 		//return $user;
     	return view('dashboard.dashboard')->with(['user'=> $user]);
     }
+
+
+
 
     public function profile(){
     	//return Auth::user();
@@ -26,6 +34,9 @@ class UserController extends Controller
 
     	return view('dashboard.user')->with(['userdetails'=> $userdetails,'user'=>$user,'address'=>$address]);
     }
+
+
+
 
     public function myproducts(){
         $products=Auth::user()->products;
@@ -38,6 +49,8 @@ class UserController extends Controller
 
         return view('dashboard.myproducts')->with(['products'=>$products,'details'=> $details]);
     }
+
+    
 
 
     public function updateinfo(Request $request){
@@ -62,17 +75,70 @@ class UserController extends Controller
 
         }elseif (!($address['Street']==$data['street'] && $address['Country'] == $data['country'] && $address['City']==$data['city'] && $address['Zip']==$data['zip']) && $address['id']!=1) {
 
-            //Need to update address
+            $userdetails = Auth::user()->details;
+            $address = $userdetails->addr;
+
+            $address->update([
+                'Country'=>$data['country'],
+                'City'=>$data['city'],
+                'Street'=>$data['street'],
+                'Zip'=>$data['zip']
+            ]);
+
+            $address->save();
 
             return redirect('/userprofile');
 
         }else{
-            //Need to insert new address
+
+            $address = \App\Address::create([
+                'Country'=>$data['country'],
+                'City'=>$data['city'],
+                'Street'=>$data['street'],
+                'Zip'=>$data['zip']
+            ]);
+
+            $userdetails = Auth::user()->details;
+
+            $userdetails->update([
+                'address'=>$address->id
+            ]);
+
+            $userdetails->save();
 
             return redirect('/userprofile');
 
         }
-        return $data;
+    }
+
+
+
+
+    public function changepassword(Request $request){
+        $data = $request->only('oldpass','newpass','rnewpass');
+
+        $user = Auth::user();
+        $userdetails = Auth::user()->details;
+        $address = $userdetails->addr;
+
+
+        if(Hash::check($data['oldpass'], $user->password)){
+            if ($data['newpass']==$data['rnewpass']) {
+            
+                $user->update([
+                    'password'=>bcrypt($data['newpass'])
+                ]);
+
+                $user->save();
+
+                return redirect('/userprofile');
+
+            }else{
+                return view('dashboard.user',['error'=>'Password didn\'t match','userdetails'=> $userdetails,'user'=>$user,'address'=>$address]);
+            }
+        }
+
+        return view('dashboard.user',['error'=>'Old password didn\'t match','userdetails'=> $userdetails,'user'=>$user,'address'=>$address]);
     }
 
 

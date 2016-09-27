@@ -39,4 +39,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Product','userId');
     }
 
+    //Get User Sales
+
+    public function sales(){
+    return $this->hasMany('App\Sale','userId');
+}
+
+
 }

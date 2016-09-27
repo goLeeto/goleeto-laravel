@@ -14,7 +14,7 @@ class address extends Model
      * @var array
      */
     protected $fillable = [
-       
+       'Country','City','Street','Zip'
     ];
 
 

@@ -78,3 +78,11 @@
 .table-upgrade td:nth-child(3){
     text-align: center;
 }
+
+
+
+#changePasswordModal{
+	margin: 20vh auto;
+	width: 70%;
+
+}

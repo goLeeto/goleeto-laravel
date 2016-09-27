@@ -14,6 +14,7 @@ class CreateUserDetails extends Migration
     public function up()
     {
         Schema::create('userDetails', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('UserId')->unsigned();
             $table->string('email');
             $table->integer('address')->unsigned()->default(1);

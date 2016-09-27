@@ -40,8 +40,8 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/" class="simple-text">
-                    Creative Tim
+                <a href="/">
+                    <img src="css/images/leeto.png" height="50px">
                 </a>
             </div>
 
@@ -61,7 +61,7 @@
                 <li>
                     <a href="/myproducts">
                         <i class="ti-view-list-alt"></i>
-                        <p>Table List</p>
+                        <p>My Products</p>
                     </a>
                 </li>
                 <li>
@@ -148,6 +148,53 @@
 
         <div class="content">
             <div class="container-fluid">
+
+
+
+            <!-- Change Password modal -->
+
+            <div id="changePasswordModal" class="modal fade">
+                <div class="card modal-content">
+                    <div class="header modal-header">
+                        <h4 class="title">Change Password</h4> 
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="content modal-content">
+                        <form method="POST" action="/changepassword">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Old Password</label>
+                                        <input name="oldpass" type="password" class="form-control border-input" placeholder="*******">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>New Password</label>
+                                        <input name="newpass" type="password" class="form-control border-input" placeholder="********">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Repeat Password</label>
+                                        <input name="rnewpass" type="password" class="form-control border-input" placeholder="********">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-info btn-fill btn-wd">Change Password</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- //// Change Password Modal -->
+
                 <div class="row">
                     <div class="col-lg-4 col-md-5">
                         <div class="card card-user">
@@ -187,7 +234,7 @@
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Edit Profile</h4> 
-                                <span class="pull-right changePassword" >Change Password</span>
+                                <span data-toggle="modal" data-target="#changePasswordModal" class="pull-right changePassword" >Change Password</span>
                             </div>
                             <div class="content">
                                 <form method="POST" action="/updateinfo">
@@ -323,5 +370,9 @@
 
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
+
+
+    <!-- Change password -->
+    <script src="js/changepassword.js"></script>
 
 </html>

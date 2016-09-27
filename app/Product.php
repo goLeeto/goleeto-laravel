@@ -33,4 +33,11 @@ class product extends Model
         return $this->hasMany('App\ProductComment','productId');
     }
 
+    //Get Product Sales
+
+    public function sales(){
+        return $this->hasMany('App\Sale','productId');
+    }
+
+
 }

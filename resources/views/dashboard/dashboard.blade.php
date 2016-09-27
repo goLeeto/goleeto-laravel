@@ -42,8 +42,8 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/" class="simple-text">
-                    Creative Tim
+                <a href="/">
+                    <img src="css/images/leeto.png" height="50px">
                 </a>
             </div>
 
