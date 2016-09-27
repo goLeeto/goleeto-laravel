@@ -69,6 +69,12 @@
                                         <input name="rnewpass" type="text" class="form-control border-input" placeholder="********">
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Repeat Password</label>
+                                        <input name="rnewpass" type="text" class="form-control border-input" placeholder="********">
+                                    </div>
+                                </div>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-info btn-fill btn-wd">Change Password</button>

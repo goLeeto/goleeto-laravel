@@ -1738,8 +1738,7 @@ textarea.form-control {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_cards\.scss}line{font-family:\0000330}}
   .card .description {
     font-size: 16px;
-    color: #66615b;
-    word-break: break-all; }
+    color: #66615b; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_cards\.scss}line{font-family:\0000335}}
   .card h6 {
     font-size: 12px;
@@ -1894,7 +1893,7 @@ textarea.form-control {
   margin-top: 10px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_cards\.scss}line{font-family:\00003204}}
 .card-user .content {
-  min-height: 245px; }
+  min-height: 200px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_cards\.scss}line{font-family:\00003209}}
 .card-user.card-plain .avatar {
   height: 190px;
@@ -2707,7 +2706,12 @@ textarea.form-control {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_responsive\.scss}line{font-family:\0000374}}
   .card form [class*="col-"] {
     padding: 6px; }
-} }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_responsive\.scss}line{font-family:\0000377}}
+  .card form [class*="col-"]:first-child {
+    padding-left: 15px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_responsive\.scss}line{font-family:\0000380}}
+  .card form [class*="col-"]:last-child {
+    padding-right: 15px; } }
 /*          Changes for small display      */
 @media (max-width: 991px) {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_responsive\.scss}line{font-family:\0000390}}

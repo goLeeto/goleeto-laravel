@@ -12,15 +12,24 @@ use App;
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Database\Query\Builder;
+
 class UserController extends Controller
 {
 
 
 
     public function dashboard(){
-		$user = Auth::user()->details;
+
+		$user = Auth::user();
+
+        $themes = \DB::table('products')->where('userId','=',$user->id)->count();
+
 		//return $user;
-    	return view('dashboard.dashboard')->with(['user'=> $user,'dashboardClass'=>'dashboard']);
+    	return view('dashboard.dashboard')->with([
+            'dashboardClass'=>'dashboard',
+            'themes'=>$themes
+        ]);
     }
 
 
@@ -32,7 +41,12 @@ class UserController extends Controller
 		$user = Auth::user();
         $address = $userdetails->addr;
 
-    	return view('dashboard.user')->with(['userdetails'=> $userdetails,'user'=>$user,'address'=>$address,'dashboardClass'=>'userprofile']);
+    	return view('dashboard.user')->with([
+            'userdetails'=> $userdetails,
+            'user'=>$user,
+            'address'=>$address,
+            'dashboardClass'=>'userprofile'
+        ]);
     }
 
 
@@ -47,7 +61,11 @@ class UserController extends Controller
             $details[] = $product->details;
         }
 
-        return view('dashboard.myproducts')->with(['products'=>$products,'details'=> $details,'dashboardClass'=>'myproducts']);
+        return view('dashboard.myproducts')->with([
+            'products'=>$products,
+            'details'=> $details,
+            'dashboardClass'=>'myproducts'
+        ]);
     }
 
     
@@ -64,13 +82,25 @@ class UserController extends Controller
         if ($defaultAddress['Street']==$data['street'] && $defaultAddress['Country'] == $data['country'] && $defaultAddress['City']==$data['city'] && $defaultAddress['Zip']==$data['zip']) {
 
 
-            return view('dashboard.user',['error'=>'Deffault address!','userdetails'=> $userdetails,'user'=>$user,'address'=>$address]);
+            return view('dashboard.user',[
+                'error'=>'Deffault address!',
+                'userdetails'=> $userdetails,
+                'user'=>$user,
+                'address'=>$address,
+                'dashboardClass'=>'userprofile'
+            ]);
 
 
         }elseif ($address['Street']==$data['street'] && $address['Country'] == $data['country'] && $address['City']==$data['city'] && $address['Zip']==$data['zip'] && $address['id']!=1) {
 
 
-            return view('dashboard.user',['error'=>'Custom address! No Changes!!','userdetails'=> $userdetails,'user'=>$user,'address'=>$address]);
+            return view('dashboard.user',[
+                'error'=>'Custom address! No Changes!!',
+                'userdetails'=> $userdetails,
+                'user'=>$user,
+                'address'=>$address,
+                'dashboardClass'=>'userprofile'
+            ]);
 
 
         }elseif (!($address['Street']==$data['street'] && $address['Country'] == $data['country'] && $address['City']==$data['city'] && $address['Zip']==$data['zip']) && $address['id']!=1) {
@@ -134,11 +164,21 @@ class UserController extends Controller
                 return redirect('/userprofile');
 
             }else{
-                return view('dashboard.user',['error'=>'Password didn\'t match','userdetails'=> $userdetails,'user'=>$user,'address'=>$address]);
+                return view('dashboard.user',[
+                    'error'=>'Password didn\'t match',
+                    'userdetails'=> $userdetails,
+                    'user'=>$user,
+                    'address'=>$address
+                ]);
             }
         }
 
-        return view('dashboard.user',['error'=>'Old password didn\'t match','userdetails'=> $userdetails,'user'=>$user,'address'=>$address]);
+        return view('dashboard.user',[
+            'error'=>'Old password didn\'t match',
+            'userdetails'=> $userdetails,
+            'user'=>$user,
+            'address'=>$address
+        ]);
     }
 
 

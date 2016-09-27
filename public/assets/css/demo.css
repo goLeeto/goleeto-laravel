@@ -90,3 +90,16 @@
 	margin:9vh auto;
 	width: 70%;
 }
+.card form [class*="col-"]:first-child {
+    padding-left: 6px;
+}
+.card form [class*="col-"]:last-child {
+    padding-right: 6px;
+}
+
+
+@media (max-width: 992px){
+	.modal-backdrop{
+		display: none;
+	}
+}
