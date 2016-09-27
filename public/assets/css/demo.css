@@ -84,5 +84,9 @@
 #changePasswordModal{
 	margin: 20vh auto;
 	width: 70%;
+}
 
+#addNewProduct{
+	margin:9vh auto;
+	width: 70%;
 }

@@ -2707,12 +2707,7 @@ textarea.form-control {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_responsive\.scss}line{font-family:\0000374}}
   .card form [class*="col-"] {
     padding: 6px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_responsive\.scss}line{font-family:\0000377}}
-  .card form [class*="col-"]:first-child {
-    padding-left: 15px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_responsive\.scss}line{font-family:\0000380}}
-  .card form [class*="col-"]:last-child {
-    padding-right: 15px; } }
+} }
 /*          Changes for small display      */
 @media (max-width: 991px) {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_responsive\.scss}line{font-family:\0000390}}

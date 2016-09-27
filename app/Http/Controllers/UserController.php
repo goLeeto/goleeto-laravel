@@ -20,7 +20,7 @@ class UserController extends Controller
     public function dashboard(){
 		$user = Auth::user()->details;
 		//return $user;
-    	return view('dashboard.dashboard')->with(['user'=> $user]);
+    	return view('dashboard.dashboard')->with(['user'=> $user,'dashboardClass'=>'dashboard']);
     }
 
 
@@ -32,7 +32,7 @@ class UserController extends Controller
 		$user = Auth::user();
         $address = $userdetails->addr;
 
-    	return view('dashboard.user')->with(['userdetails'=> $userdetails,'user'=>$user,'address'=>$address]);
+    	return view('dashboard.user')->with(['userdetails'=> $userdetails,'user'=>$user,'address'=>$address,'dashboardClass'=>'userprofile']);
     }
 
 
@@ -47,7 +47,7 @@ class UserController extends Controller
             $details[] = $product->details;
         }
 
-        return view('dashboard.myproducts')->with(['products'=>$products,'details'=> $details]);
+        return view('dashboard.myproducts')->with(['products'=>$products,'details'=> $details,'dashboardClass'=>'myproducts']);
     }
 
     
