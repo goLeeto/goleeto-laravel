@@ -87,7 +87,7 @@
 }
 
 #addNewProduct{
-	margin:9vh auto;
+	margin:8vh auto;
 	width: 70%;
 }
 .card form [class*="col-"]:first-child {
@@ -102,4 +102,72 @@
 	.modal-backdrop{
 		display: none;
 	}
+}
+
+/*Dropdown*/
+
+
+
+.anch, .inp-anch {
+    height: 40px;
+    border: none;
+}
+.anch-kerko {
+    width: 100%;
+}
+
+.anch {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 50px 5px 10px;
+    border: 1px solid #CCC5B9;
+    border-radius: 4px;
+    background-color: #fffcf5;
+    color: #ccc5b9;
+}
+.anch-kerko {
+    width: 100%;
+}
+.dropdown-check-list {
+    display: inline-block;
+}
+.dropdown-check-list ul.items, .dropdown-check-list ul.items2 {
+    padding: 2px;
+    display: none;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    background: white;
+    position: absolute;
+    z-index: 99;
+    min-width: 96%;
+}
+input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+    -webkit-appearance: initial;
+    background-color: white;
+    border-radius: 2px;
+    border: 1px solid #cecece;
+}
+.items li span {
+    margin-left: 10px;
+}
+.items{
+	overflow-y: scroll;
+    height: 200px;
+}
+input[type="checkbox"]:checked::after {
+    content: "✓";
+    margin-left: 2px;
+    color: #000000;
+}
+input[type="checkbox"]:not(checked)::after {
+    content: "✓";
+    margin-left: 2px;
+    color: #ffffff;
+}
+ul{
+	list-style: none;
 }

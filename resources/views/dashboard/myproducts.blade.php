@@ -18,75 +18,7 @@
 
 
 
-        <!-- Change Password modal -->
-
-        <div id="addNewProduct" class="modal fade">
-            <div class="card modal-content">
-                <div class="header modal-header">
-                    <h4 class="title">Add new Product</h4> 
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="content modal-content">
-                    <form method="POST" action="/changepassword">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Name </label>
-                                        <input name="newpass" type="text" class="form-control border-input" placeholder="********">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Repeat Password</label>
-                                        <input name="rnewpass" type="text" class="form-control border-input" placeholder="********">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>New Password</label>
-                                        <input name="newpass" type="text" class="form-control border-input" placeholder="********">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Repeat Password</label>
-                                        <input name="rnewpass" type="text" class="form-control border-input" placeholder="********">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>New Password</label>
-                                        <input name="newpass" type="text" class="form-control border-input" placeholder="********">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Repeat Password</label>
-                                        <input name="rnewpass" type="text" class="form-control border-input" placeholder="********">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Repeat Password</label>
-                                        <input name="rnewpass" type="text" class="form-control border-input" placeholder="********">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-info btn-fill btn-wd">Change Password</button>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- //// Change Password Modal -->
+        @include('dashboard.addproduct')
 
 
 

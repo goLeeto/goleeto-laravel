@@ -83,7 +83,7 @@
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="assets/js/bootstrap-checkbox-radio.js"></script>
+	<!-- <script src="assets/js/bootstrap-checkbox-radio.js"></script> -->
 
 	<!--  Charts Plugin -->
 	<script src="assets/js/chartist.min.js"></script>
@@ -103,7 +103,10 @@
 	<script type="text/javascript">
     	$(document).ready(function(){
 
-        	demo.initChartist();
+            if (window.location.pathname=='/dashboard') {
+                demo.initChartist();
+            }
+
 
     	});
 	</script>

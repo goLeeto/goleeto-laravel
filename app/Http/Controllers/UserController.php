@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 
 use App;
 
+use Input;
+
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Database\Query\Builder;
@@ -181,10 +183,51 @@ class UserController extends Controller
         ]);
     }
 
+    public function addproduct(Request $request){
+        $data = $request->only('name','price','categories','features');
+        
+
+        //To Do validate input
+
+
+        //Get Theme Preview
+
+        $preview=$request->file('preview');
+        $previewName=$data['name'].'.'.$preview->guessExtension();
+        $previewPath='themes/'.$data['name'].'/themePreviews';
+        $preview->move($previewPath,$previewName);
+
+        //Get Theme Archive
+
+        $archive=$request->file('archive');
+        $archiveName = $data['name'].'.'.$archive->guessExtension();
+        $archivePath = 'themes/'.$data['name'];
+        $archive->move($archivePath,$archiveName);
+
+        // Unzip theme
+
+        $archivePathName = $archivePath.'/'.$archiveName;
+        $zip = new \ZipArchive;
+        $zip->open($archivePathName);
+        $zip->extractTo($archivePath);
+        $zip->close();
+
+
+        return redirect($previewPath.'/'.$previewName);
+
+        //To Do insert into database 
+
+
+    }
 
 
 
 
 
-    
+
+
+
+
+
+
 }
