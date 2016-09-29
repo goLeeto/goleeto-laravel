@@ -51,6 +51,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/myproducts', 'UserController@myproducts');
 
+	Route::get('/statistics', 'UserController@statistics');
+
 	Route::post('/updateinfo', 'UserController@updateinfo');
 
 	Route::post('/changepassword', 'UserController@changepassword');

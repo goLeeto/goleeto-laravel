@@ -13,7 +13,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Name </label>
                                 <input name="name" type="text" class="form-control border-input" placeholder="Theme Name">
@@ -25,7 +25,7 @@
                                 <input name="price" type="text" class="form-control border-input" placeholder="$">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label>Description</label>
                                 <input name="description" type="text" class="form-control border-input" placeholder="Lorem ipsum dolor sit amet...">
@@ -34,18 +34,13 @@
                         <div class="col-md-6" >
                             <label>Category</label>
                             <div id="zgjidhCategory" class="dropdown-check-list anch-kerko" tabindex="100">
-                              <span class="zgjidhCategoryanchor anch anch-kerko">Choose Categories</span>
-                              <ul id="zgjidhCategoryItems" class="items ">
-                                  <li><input type="checkbox" name="categories" value="Category 1" /><span>Category 1 </span></li>
-                                  <li><input type="checkbox" name="categories" value="Category 2" /><span>Category 2 </span></li>
-                                  <li><input type="checkbox" name="categories" value="Category 3" /><span>Category 3 </span></li>
-                                  <li><input type="checkbox" name="categories" value="Category 4" /><span>Category 4 </span></li>
-                                  <li><input type="checkbox" name="categories" value="Category 5" /><span>Category 5 </span></li>
-                                  <li><input type="checkbox" name="categories" value="Category 6" /><span>Category 6 </span></li>
-                                  <li><input type="checkbox" name="categories" value="Category 7" /><span>Category 7 </span></li>
-                                  <li><input type="checkbox" name="categories" value="Category 8" /><span>Category 8 </span></li>
-                                  <li><input type="checkbox" name="categories" value="Category 9" /><span>Category 9 </span></li>
-                              </ul>
+                            <span class="zgjidhCategoryanchor anch anch-kerko">Choose Categories</span>
+                                <ul id="zgjidhCategoryItems" class="items ">
+                                @foreach($categories as $category)
+                                    <li><input type="checkbox" name="categories" value="{{$category['id']}}" /><span>{{$category['name']}} </span>
+                                    </li>
+                                @endforeach
+                                </ul>
                             </div>
                         </div>
                         <div class="col-md-6" >
@@ -53,22 +48,17 @@
                             <div id="zgjidhFeature" class="dropdown-check-list anch-kerko" tabindex="100">
                               <span class="zgjidhFeatureanchor anch anch-kerko">Choose Feature</span>
                               <ul id="zgjidhFeatureItems" class="items ">
-                                  <li><input type="checkbox" name="features" /><span>Feature 1 </span></li>
-                                  <li><input type="checkbox" name="features" /><span>Feature 2 </span></li>
-                                  <li><input type="checkbox" name="features" /><span>Feature 3 </span></li>
-                                  <li><input type="checkbox" name="features" /><span>Feature 4 </span></li>
-                                  <li><input type="checkbox" name="features" /><span>Feature 5 </span></li>
-                                  <li><input type="checkbox" name="features" /><span>Feature 6 </span></li>
-                                  <li><input type="checkbox" name="features" /><span>Feature 7 </span></li>
-                                  <li><input type="checkbox" name="features" /><span>Feature 8 </span></li>
-                                  <li><input type="checkbox" name="features" /><span>Feature 9 </span></li>
+                                @foreach($features as $feature)
+                                    <li><input type="checkbox" name="categories" value="{{$feature['id']}}" /><span>{{$feature['name']}} </span>
+                                    </li>
+                                @endforeach
                               </ul>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="">
                                 <label>Theme Preview</label>
-                                <input name="preview" type="file" accept="image/*">
+                                <input name="preview[]" type="file" accept="image/*" multiple>
                             </div>
                         </div>
                         <div class="col-md-6">

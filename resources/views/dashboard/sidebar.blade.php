@@ -13,28 +13,28 @@
             </div>
 
             <ul class="nav">
-                <li @if($dashboardClass=='dashboard') class="active" @endif>
+                <li @if($dashboardClass=='Dashboard') class="active" @endif>
                     <a href="/dashboard">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li @if($dashboardClass=='userprofile') class="active" @endif>
+                <li @if($dashboardClass=='User Profile') class="active" @endif>
                     <a href="/userprofile">
                         <i class="ti-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
-                <li @if($dashboardClass=='myproducts') class="active" @endif>
+                <li @if($dashboardClass=='My Products') class="active" @endif>
                     <a href="/myproducts">
                         <i class="ti-view-list-alt"></i>
                         <p>My Products</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
-                        <i class="ti-text"></i>
-                        <p>Typography</p>
+                    <a href="/statistics">
+                        <i class="ti-stats-up"></i>
+                        <p>Statistics</p>
                     </a>
                 </li>
                 <li>

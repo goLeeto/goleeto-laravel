@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 use App;
 
-use Input;
-
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Database\Query\Builder;
@@ -29,7 +27,7 @@ class UserController extends Controller
 
 		//return $user;
     	return view('dashboard.dashboard')->with([
-            'dashboardClass'=>'dashboard',
+            'dashboardClass'=>'Dashboard',
             'themes'=>$themes
         ]);
     }
@@ -47,7 +45,7 @@ class UserController extends Controller
             'userdetails'=> $userdetails,
             'user'=>$user,
             'address'=>$address,
-            'dashboardClass'=>'userprofile'
+            'dashboardClass'=>'User Profile'
         ]);
     }
 
@@ -63,11 +61,23 @@ class UserController extends Controller
             $details[] = $product->details;
         }
 
+        $features= App\Feature::all();
+        $categories = App\Category::all();
+
+
         return view('dashboard.myproducts')->with([
             'products'=>$products,
             'details'=> $details,
-            'dashboardClass'=>'myproducts'
+            'dashboardClass'=>'My Products',
+            'features'=>$features,
+            'categories'=>$categories
         ]);
+    }
+
+
+    public function statistics(){
+
+            return 'These are statistics!';
     }
 
     
@@ -190,12 +200,21 @@ class UserController extends Controller
         //To Do validate input
 
 
+
         //Get Theme Preview
 
-        $preview=$request->file('preview');
-        $previewName=$data['name'].'.'.$preview->guessExtension();
-        $previewPath='themes/'.$data['name'].'/themePreviews';
-        $preview->move($previewPath,$previewName);
+        //To Do convert image to jpg, Resize image to a specific resolution
+
+        $previews=$request->file('preview');
+        $i=0;
+        foreach ($previews as $preview) {
+            $previewName=$data['name'].$i.'.'.$preview->guessExtension();
+            $previewPath='themes/'.$data['name'].'/themePreviews';
+            $preview->move($previewPath,$previewName);
+            $i++;
+        }
+
+        
 
         //Get Theme Archive
 

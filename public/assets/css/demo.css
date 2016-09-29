@@ -154,9 +154,12 @@ input[type="checkbox"] {
 .items li span {
     margin-left: 10px;
 }
+.items li{
+    margin-left: 5px;
+}
 .items{
 	overflow-y: scroll;
-    height: 200px;
+    height: 150px;
 }
 input[type="checkbox"]:checked::after {
     content: "✓";
