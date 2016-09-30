@@ -79,12 +79,13 @@ class UserController extends Controller
 
     
 
-
+//to do performance fix
     public function updateinfo(Request $request){
         $data = $request->only('street','country','city','zip');
-        $userdetails = Auth::user()->details;
         $user = Auth::user();
-        $address = $userdetails->addr;
+        $user->details;
+        
+        $address = $user->details->addr;
 
         $defaultAddress =  App\Address::find(1);
 
@@ -93,9 +94,7 @@ class UserController extends Controller
 
             return view('dashboard.user',[
                 'error'=>'Deffault address!',
-                'userdetails'=> $userdetails,
                 'user'=>$user,
-                'address'=>$address,
                 'dashboardClass'=>'userprofile'
             ]);
 
@@ -105,9 +104,7 @@ class UserController extends Controller
 
             return view('dashboard.user',[
                 'error'=>'Custom address! No Changes!!',
-                'userdetails'=> $userdetails,
                 'user'=>$user,
-                'address'=>$address,
                 'dashboardClass'=>'userprofile'
             ]);
 

@@ -17,7 +17,7 @@ class ProductController extends Controller
         $data = $request->only('name','price','categories','features','description');
         
 
-        //To Do validate input
+        //To do unique theme name 
         if (($data['name']!=''||$data['name']!=null)&&
             ($data['price']!=''||$data['price']!=null)&&
             ($data['categories']!=''||$data['categories']!=null)&&
