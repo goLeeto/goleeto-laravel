@@ -55,8 +55,12 @@
                                         <td>{{$i+1}}</td>
                                         <td>{{$product->name}}</td>
                                         <td><span>$</span>{{$product->price}}</td>
-                                        <td> {{$details[$i]['description']}}</td>
-                                        <td> {{ $details[$i]['rating']/$details[$i]['ratingNo'] }}</td>
+                                        <td> {{$product['details']['description']}}</td>
+                                        @if($product['details']['ratingNo']==0)
+                                        <td>No Rating</td>
+                                        @else
+                                        <td> {{ $product['details']['rating']/$product['details']['ratingNo'] }}</td>
+                                        @endif
                                         <td> <span class="changePassword">Edit</span></td>
                                     </tr>
 

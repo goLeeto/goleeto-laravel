@@ -113,7 +113,7 @@
                                     <div class="col-md-7">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control border-input" placeholder="Email" value="{{$userdetails->email}}" disabled>
+                                            <input type="email" class="form-control border-input" placeholder="Email" value="{{$user['details']->email}}" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -137,7 +137,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Address</label>
-                                            <input name="street" type="text" class="form-control border-input" placeholder="Home Address" value="{{$address->Street}}">
+                                            <input name="street" type="text" class="form-control border-input" placeholder="Home Address" value="{{$user['details']['addr']->Street}}">
                                         </div>
                                     </div>
                                 </div>
@@ -146,19 +146,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>City</label>
-                                            <input name="city" type="text" class="form-control border-input" placeholder="City" value="{{$address->City}}">
+                                            <input name="city" type="text" class="form-control border-input" placeholder="City" value="{{$user['details']['addr']->City}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Country</label>
-                                            <input name="country" type="text" class="form-control border-input" placeholder="Country" value="{{$address->Country}}">
+                                            <input name="country" type="text" class="form-control border-input" placeholder="Country" value="{{$user['details']['addr']->Country}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Postal Code</label>
-                                            <input name="zip" type="text" class="form-control border-input" placeholder="ZIP" value="{{$address->Zip}}">
+                                            <input name="zip" type="text" class="form-control border-input" placeholder="ZIP" value="{{$user['details']['addr']->Zip}}">
                                         </div>
                                     </div>
                                 </div>

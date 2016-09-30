@@ -53,11 +53,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/statistics', 'UserController@statistics');
 
+	Route::get('myproducts/{id}', 'ProductController@getproduct');
+
 	Route::post('/updateinfo', 'UserController@updateinfo');
 
 	Route::post('/changepassword', 'UserController@changepassword');
 
-	Route::post('/addproduct','UserController@addproduct');
+	Route::post('/addproduct','ProductController@addproduct');
 
 });
 

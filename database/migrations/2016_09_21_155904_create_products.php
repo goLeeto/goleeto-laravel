@@ -19,6 +19,7 @@ class CreateProducts extends Migration
             $table->double('price');
             $table->string('imgPath');
             $table->integer('userId')->unsigned();
+            $table->timestamps();
 
             $table->foreign('userId')->references('id')->on('users');
 

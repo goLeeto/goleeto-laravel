@@ -14,11 +14,11 @@ class CreateProductFeatures extends Migration
     public function up()
     {
         Schema::create('productFeatures', function (Blueprint $table) {
-            $table->integer('productId')->unsigned();
-            $table->integer('featureId')->unsigned();
+            $table->integer('product_id')->unsigned();
+            $table->integer('feature_id')->unsigned();
 
-            $table->foreign('productId')->references('id')->on('products');
-            $table->foreign('featureId')->references('id')->on('features');
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('feature_id')->references('id')->on('features');
         });
     }
 

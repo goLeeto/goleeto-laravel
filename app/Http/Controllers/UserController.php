@@ -36,15 +36,12 @@ class UserController extends Controller
 
 
     public function profile(){
-    	//return Auth::user();
-		$userdetails = Auth::user()->details;
-		$user = Auth::user();
-        $address = $userdetails->addr;
+        $user = Auth::user();
+		$user->details;
+        $user->details->addr;
 
     	return view('dashboard.user')->with([
-            'userdetails'=> $userdetails,
             'user'=>$user,
-            'address'=>$address,
             'dashboardClass'=>'User Profile'
         ]);
     }
@@ -58,16 +55,16 @@ class UserController extends Controller
         $details= [];
 
         foreach ($products as $product) {
-            $details[] = $product->details;
+            $product->details;
         }
 
         $features= App\Feature::all();
         $categories = App\Category::all();
 
+        //return $products;
 
         return view('dashboard.myproducts')->with([
             'products'=>$products,
-            'details'=> $details,
             'dashboardClass'=>'My Products',
             'features'=>$features,
             'categories'=>$categories
@@ -192,61 +189,5 @@ class UserController extends Controller
             'address'=>$address
         ]);
     }
-
-    public function addproduct(Request $request){
-        $data = $request->only('name','price','categories','features');
-        
-
-        //To Do validate input
-
-
-
-        //Get Theme Preview
-
-        //To Do convert image to jpg, Resize image to a specific resolution
-
-        $previews=$request->file('preview');
-        $i=0;
-        foreach ($previews as $preview) {
-            $previewName=$data['name'].$i.'.'.$preview->guessExtension();
-            $previewPath='themes/'.$data['name'].'/themePreviews';
-            $preview->move($previewPath,$previewName);
-            $i++;
-        }
-
-        
-
-        //Get Theme Archive
-
-        $archive=$request->file('archive');
-        $archiveName = $data['name'].'.'.$archive->guessExtension();
-        $archivePath = 'themes/'.$data['name'];
-        $archive->move($archivePath,$archiveName);
-
-        // Unzip theme
-
-        $archivePathName = $archivePath.'/'.$archiveName;
-        $zip = new \ZipArchive;
-        $zip->open($archivePathName);
-        $zip->extractTo($archivePath);
-        $zip->close();
-
-
-        return redirect($previewPath.'/'.$previewName);
-
-        //To Do insert into database 
-
-
-    }
-
-
-
-
-
-
-
-
-
-
 
 }

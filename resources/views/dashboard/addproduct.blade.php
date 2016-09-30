@@ -37,7 +37,7 @@
                             <span class="zgjidhCategoryanchor anch anch-kerko">Choose Categories</span>
                                 <ul id="zgjidhCategoryItems" class="items ">
                                 @foreach($categories as $category)
-                                    <li><input type="checkbox" name="categories" value="{{$category['id']}}" /><span>{{$category['name']}} </span>
+                                    <li><input type="checkbox" name="categories[]" value="{{$category['id']}}" /><span>{{$category['name']}} </span>
                                     </li>
                                 @endforeach
                                 </ul>
@@ -49,7 +49,7 @@
                               <span class="zgjidhFeatureanchor anch anch-kerko">Choose Feature</span>
                               <ul id="zgjidhFeatureItems" class="items ">
                                 @foreach($features as $feature)
-                                    <li><input type="checkbox" name="categories" value="{{$feature['id']}}" /><span>{{$feature['name']}} </span>
+                                    <li><input type="checkbox" name="features[]" value="{{$feature['id']}}" /><span>{{$feature['name']}} </span>
                                     </li>
                                 @endforeach
                               </ul>

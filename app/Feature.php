@@ -13,7 +13,7 @@ class feature extends Model
      * @var array
      */
     protected $fillable = [
-       
+       'productId','featureId'
     ];
 
 

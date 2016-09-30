@@ -13,7 +13,7 @@ class category extends Model
      * @var array
      */
     protected $fillable = [
-       
+       'productId','categoryId'
     ];
 
 

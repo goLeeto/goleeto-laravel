@@ -13,7 +13,7 @@ class product extends Model
      * @var array
      */
     protected $fillable = [
-       
+    'Name','price','imgPath','userId'
     ];
 
 
@@ -37,6 +37,16 @@ class product extends Model
 
     public function sales(){
         return $this->hasMany('App\Sale','productId');
+    }
+
+
+
+    public function productFeatures(){
+        return $this->belongsToMany('App\Feature','productFeatures');
+    }
+
+    public function productCategorys(){
+        return $this->belongsToMany('App\Category','productCategorys');
     }
 
 
