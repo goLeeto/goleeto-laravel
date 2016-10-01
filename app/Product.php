@@ -39,6 +39,10 @@ class product extends Model
         return $this->hasMany('App\Sale','productId');
     }
 
+    public function images(){
+        return $this->hasMany('App\ProductImage','productId');
+    }
+
 
 
     public function productFeatures(){

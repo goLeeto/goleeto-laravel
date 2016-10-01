@@ -38,6 +38,8 @@ class ProductController extends Controller
                         $previewName=$data['name'].$i.'.'.$preview->guessExtension();
                         $preview->move($previewPath,$previewName);
                         $i++;
+                        $previewImgPaths[] = $previewName;
+                        
                     }
 
                     
@@ -74,6 +76,8 @@ class ProductController extends Controller
             'imgPath'=>$previewPath,
             'userId'=>Auth::user()->id
         ]);
+
+
         $newProductDetails = App\ProductDetail::create([
             'id'=>$newProduct->id,
             'Description'=>$data['description'],
@@ -99,6 +103,13 @@ class ProductController extends Controller
             ]);
         }
 
+        foreach ($previewImgPaths as $images) {
+            \DB::table('productImages')->insert([
+                'productId'=> $newProduct->id,
+                'path'=>$images
+            ]);
+        }
+
         return redirect('/myproducts');
 
     }
@@ -111,11 +122,22 @@ class ProductController extends Controller
 
         $features = $product->productFeatures;
 
-        $categories =$product->productCategorys;
+        $categories = $product->productCategorys;
+
+        $images = $product->images;
 
         $data[] = $product;
 
-        return $data;
+        $features= App\Feature::all();
+
+        $categories = App\Category::all();
+
+        return view('dashboard.editproduct')->with([
+            'dashboardClass'=>'Edit Product',
+            'product'=>$product,
+            'features'=>$features,
+            'categories'=>$categories
+        ]);
 
     }
 

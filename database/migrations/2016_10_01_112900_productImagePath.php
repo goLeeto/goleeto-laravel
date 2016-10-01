@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSales extends Migration
+class ProductImagePath extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateSales extends Migration
      */
     public function up()
     {
-        Schema::create('sales', function (Blueprint $table) {
+        Schema::create('productImages', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userId')->unsigned();
             $table->integer('productId')->unsigned();
-            $table->integer('value');
-            $table->timestamps();
+            $table->string('path');
 
-            $table->foreign('userId')->references('id')->on('users');
             $table->foreign('productId')->references('id')->on('products');
-
 
         });
     }
@@ -34,6 +30,6 @@ class CreateSales extends Migration
      */
     public function down()
     {
-        Schema::drop('sales');
+        Schema::drop('productImages');
     }
 }

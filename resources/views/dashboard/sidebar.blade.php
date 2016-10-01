@@ -8,7 +8,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="/">
-                    <img src="css/images/leeto.png" height="50px">
+                    <img src="../css/images/leeto.png" height="50px">
                 </a>
             </div>
 

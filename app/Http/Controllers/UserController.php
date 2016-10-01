@@ -23,12 +23,33 @@ class UserController extends Controller
 
 		$user = Auth::user();
 
-        $themes = \DB::table('products')->where('userId','=',$user->id)->count();
+        $themes = \DB::table('products')
+                                ->where('userId','=',$user->id)
+                                ->count();
+
+
+        $sales =\DB::table('products')
+                                ->join('sales','products.id','=','sales.productId')
+                                ->where('products.userId','=',$user->id);
+        
+        $revenue = $sales->sum('sales.value');
+
+        $saleNo = $sales->count();
+
+        $uniqueUsers = $sales
+                        ->select('sales.userId')
+                        ->groupBy('sales.userId')
+                        ->get()
+                        ->count();
+
 
 		//return $user;
     	return view('dashboard.dashboard')->with([
             'dashboardClass'=>'Dashboard',
-            'themes'=>$themes
+            'themes'=>$themes,
+            'revenue'=>$revenue,
+            'sales'=>$saleNo,
+            'uniqueUsers'=>$uniqueUsers
         ]);
     }
 
@@ -95,7 +116,7 @@ class UserController extends Controller
             return view('dashboard.user',[
                 'error'=>'Deffault address!',
                 'user'=>$user,
-                'dashboardClass'=>'userprofile'
+                'dashboardClass'=>'User Profile'
             ]);
 
 
@@ -105,16 +126,14 @@ class UserController extends Controller
             return view('dashboard.user',[
                 'error'=>'Custom address! No Changes!!',
                 'user'=>$user,
-                'dashboardClass'=>'userprofile'
+                'dashboardClass'=>'User Profile'
             ]);
 
 
         }elseif (!($address['Street']==$data['street'] && $address['Country'] == $data['country'] && $address['City']==$data['city'] && $address['Zip']==$data['zip']) && $address['id']!=1) {
 
-            $userdetails = Auth::user()->details;
-            $address = $userdetails->addr;
 
-            $address->update([
+            Auth::user()->details->addr->update([
                 'Country'=>$data['country'],
                 'City'=>$data['city'],
                 'Street'=>$data['street'],
@@ -154,8 +173,8 @@ class UserController extends Controller
         $data = $request->only('oldpass','newpass','rnewpass');
 
         $user = Auth::user();
-        $userdetails = Auth::user()->details;
-        $address = $userdetails->addr;
+        $user->details;
+        $user->details->addr;
 
 
         if(Hash::check($data['oldpass'], $user->password)){
@@ -172,18 +191,16 @@ class UserController extends Controller
             }else{
                 return view('dashboard.user',[
                     'error'=>'Password didn\'t match',
-                    'userdetails'=> $userdetails,
                     'user'=>$user,
-                    'address'=>$address
+                    'dashboardClass'=>'User Profile'
                 ]);
             }
         }
 
         return view('dashboard.user',[
             'error'=>'Old password didn\'t match',
-            'userdetails'=> $userdetails,
             'user'=>$user,
-            'address'=>$address
+            'dashboardClass'=>'User Profile'
         ]);
     }
 
