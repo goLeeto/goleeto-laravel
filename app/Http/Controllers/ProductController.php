@@ -38,7 +38,7 @@ class ProductController extends Controller
                         $previewName=$data['name'].$i.'.'.$preview->guessExtension();
                         $preview->move($previewPath,$previewName);
                         $i++;
-                        $previewImgPaths[] = $previewName;
+                        $previewImgPaths[] = $previewPath.'/'.$previewName;
                         
                     }
 
@@ -62,8 +62,6 @@ class ProductController extends Controller
 
 
 
-        }else{
-            return $data;
         }
 
         //No return Insert into database
@@ -132,6 +130,8 @@ class ProductController extends Controller
 
         $categories = App\Category::all();
 
+        $images = $product->images;
+
         return view('dashboard.editproduct')->with([
             'dashboardClass'=>'Edit Product',
             'product'=>$product,
@@ -139,6 +139,11 @@ class ProductController extends Controller
             'categories'=>$categories
         ]);
 
+    }
+
+
+    public function editproduct(Request $request){
+        return $request->only('name','price','description','categories','features','photos','preview');
     }
 
 

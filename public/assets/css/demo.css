@@ -174,3 +174,40 @@ input[type="checkbox"]:not(checked)::after {
 ul{
 	list-style: none;
 }
+.check
+{
+    opacity:0.5;
+    background-color: #d6d6d6;
+    color:#996;
+    
+}
+
+.imgchecked::before{
+    position: absolute;
+    content: "\f00d";
+    font-family: FontAwesome;
+    left: 10px;
+    top: 5px;
+    font-size: 21px;
+}
+.imgContainer{
+    width: 100px;
+    height: 100px;
+}
+.editProductImages{
+    margin-bottom: 50px;
+}
+.nomargin{
+    margin: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+

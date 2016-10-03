@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Price</label>
+                                <label>Price $</label>
                                 <input name="price" type="text" class="form-control border-input" placeholder="$">
                             </div>
                         </div>

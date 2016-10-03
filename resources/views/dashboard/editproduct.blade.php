@@ -21,7 +21,7 @@
 		            <h4 class="title">Editing {{$product->name}}</h4> 
 		        </div>
 		        <div class="content ">
-		            <form method="POST" action="/addproduct" enctype="multipart/form-data">
+		            <form method="POST" action="/editproduct" enctype="multipart/form-data">
 		            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
@@ -35,7 +35,7 @@
 		                        </div>
 		                        <div class="col-md-6">
 		                            <div class="form-group">
-		                                <label>Price</label>
+		                                <label>Price $</label>
 		                                <input name="price" type="text" class="form-control border-input" value="{{$product->price}}">
 		                            </div>
 		                        </div>
@@ -83,16 +83,22 @@
 		                              </ul>
 		                            </div>
 		                        </div>
-		                        <div class="col-md-6">
+		                        <div class="col-md-12">
 		                            <div class="">
 		                                <label>Theme Preview</label>
-		                                <input name="preview[]" type="file" accept="image/*" multiple>
-		                            </div>
-		                        </div>
-		                        <div class="col-md-6">
-		                            <div class="">
-		                                <label>Theme Archive</label>
-		                                <input name="archive" type="file" accept=".zip">
+		                                <div class="row ">
+	                                		@foreach($product->images as $imagepath)
+			                                	<div class="col-md-3 editProductImages"><label class="imgContainer"><img src="../{{$imagepath->path}}" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="photos[]" value="{{$imagepath->id}}" class="hidden" autocomplete="off"></label></div>
+			                                @endforeach
+		                                </div>
+		                                <div class="row nomargin">
+		                                <label> Add more photos</label>
+		                                	<div class="col-md-12">
+		                                		<input name="preview[]" type="file" accept="image/*" multiple>
+		                                	</div>
+		                                </div>
+		                                
+		                                
 		                            </div>
 		                        </div>
 		                    </div>
@@ -134,6 +140,28 @@
 
 </script>
 
+
+<script type="text/javascript">
+var i=0;
+	$(document).ready(function(){
+    		$(".imgContainer").on('click',function(){
+    			console.log($(this));
+				$(this).toggleClass('imgchecked');
+				$(this).children('img.img-thumbnail.img-check').toggleClass('check');
+
+				if ($(this).children('input.hidden').is(':checked')) {
+					$(this).children('input.hidden').removeAttr('checked');
+				}else{
+					$(this).children('input.hidden').attr('checked', 'true');
+				}
+
+				//Executes twice
+				return false;
+				
+				
+			});
+	});
+</script>
 
 
 

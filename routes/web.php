@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('home',['className' => 'home']);
 });
 
-Route::get('/products', function() {
-    return view('products',['className' => 'products']);
-});
+Route::get('/products','HomeController@getProducts');
 
 Route::get('/about', function() {
     return view('about',['className' => 'about']);
@@ -60,6 +58,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/changepassword', 'UserController@changepassword');
 
 	Route::post('/addproduct','ProductController@addproduct');
+
+	Route::post('/editproduct', 'ProductController@editproduct');
 
 });
 

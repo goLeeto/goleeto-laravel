@@ -28,6 +28,8 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="../assets/css/themify-icons.css" rel="stylesheet">
+    <script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -44,7 +46,7 @@
         @yield('content')
 
 
-        <footer class="footer">
+        <!-- <footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">
                     <ul>
@@ -70,7 +72,7 @@
                     &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
                 </div>
             </div>
-        </footer>
+        </footer> -->
 
     </div>
 </div>
@@ -79,8 +81,7 @@
 </body>
 
     <!--   Core JS Files   -->
-    <script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+
 
 	<!--  Checkbox, Radio & Switch Plugins -->
 	<!-- <script src="../assets/js/bootstrap-checkbox-radio.js"></script> -->
@@ -110,5 +111,6 @@
 
     	});
 	</script>
+
 
 </html>
