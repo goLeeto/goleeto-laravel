@@ -108,7 +108,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return redirect('/myproducts');
+        return redirect('/seller/myproducts');
 
     }
 
@@ -143,7 +143,47 @@ class ProductController extends Controller
 
 
     public function editproduct(Request $request){
-        return $request->only('name','price','description','categories','features','photos','preview');
+        
+        $data = $request->only('id','name','price','description','categories','features','photos','preview');
+
+        $id = $data['id'];
+
+        $product = App\Product::find($id);
+
+        $product->name = $data['name'];
+        $product->price = $data['price'];
+        $product->save();
+
+        $product->details->description = $data['description'];
+        $product->details->save();
+
+
+        $q = 'DELETE FROM productCategorys WHERE product_id = ?';
+        \DB::delete($q,$data['categories']);
+
+        foreach ($data['categories'] as $category) {
+            \DB::table('productCategorys')->insert([
+                'product_id'=>$id,
+                'category_id'=>$category
+            ]);
+        }
+
+        $q = 'DELETE FROM productFeatures WHERE product_id = ?';
+        \DB::delete($q,$data['features']);
+    
+        foreach ($data['features'] as $features) {
+            \DB::table('productFeatures')->insert([
+                'product_id'=>$id,
+                'feature_id'=>$features
+            ]);
+        }
+
+        return '';
+
+
+
+
+
     }
 
 

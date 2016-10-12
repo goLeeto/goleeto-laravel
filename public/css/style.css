@@ -7,6 +7,10 @@ a{
 .bodyContainer{
   margin-top:70px;
   padding: 0px;
+  min-height: calc(100vh - 70px);
+}
+.bodyContainer.profile{
+  margin-top: 100px;
 }
 #menu-div{
   margin:0px;
@@ -905,11 +909,22 @@ hr{
   line-height: auto;
   vertical-align: middle;
 }
+.nomargin{
+  margin: 0px;
+}
+.resetrow{
+  margin-top: 20vh;
+}
+.control-label{
+  color: inherit;
+}
 
-
-
-
-
+#portfolio .image a img{
+  width: 100%;
+}
+.portfolio{
+  margin-bottom: 50px;
+}
 
 
 

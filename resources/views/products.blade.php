@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html>
-@include('head')
-	<body>
-		@include('header')
-		@include('loginForm')
+@extends('layouts.homelayout')
+
+
+@section('container')
 
 		<div class="container-fluid bodyContainer">
 			@include('search')
@@ -44,15 +42,15 @@
 										</span>
 									</p>
 									<p class="pull-right">
-										<i class="fa fa-star-o" aria-hidden="true"></i>
-										<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+										<a href=""><i class="fa fa-star-o" aria-hidden="true"></i></a>
+										<a href=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
 									</p>
 								</div>
 								
 								<p>{{$product->details->description}} </p>
 								
 								<p>
-									<a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+									<a href="#" class="btn btn-primary">Buy Now!</a> <a href="/products/{{$product->id}}" class="btn btn-default">More Info</a>
 								</p>
 							</div>
 							
@@ -63,10 +61,6 @@
 				<!-- /.row -->
 			</div>
 		</div>
-
-
-		@include('footer')
-		@include('scripts')
 		<script type="text/javascript">
 			$('.changeImage.left').click(function() {
 				var el=$(this).parent().children('img');
@@ -116,6 +110,4 @@
 				
 			});
 		</script>
-
-	</body>
-</html>
+@endsection

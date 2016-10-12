@@ -33,7 +33,7 @@
                       </ul>
                 </li>
 				<li>
-                    <a href="#">
+                    <a href="/seller/settings">
 						<i class="ti-settings"></i>
 						<p>Settings</p>
                     </a>

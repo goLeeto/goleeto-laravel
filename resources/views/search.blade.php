@@ -1,7 +1,9 @@
     <div class="searchTab">
       <div id="wrap">
-          <input class="search" id="searchId" name="search" type="text" placeholder="What're we looking for ?">
+        <form action="/search">
+          <input class="search" id="searchId" name="search" type="text" placeholder="What're we looking for ?" required>
           <input id="search_submit" value="Rechercher" type="submit" >
+        </form>
       </div>
     </div>
     <!-- Modal -->
@@ -26,37 +28,9 @@
     $(this).addClass('searchFocus');
   });
   $('#search_submit').click(function() {
-    var search = document.getElementById('searchId');
-    var searchValue = search.value;
-    var searchEl = $('.search');
-    if (searchValue!=='') {
-      search.value='';
-      //// Open a dialog with loading
-      //// Body overflow hidden
-      $('#searchModal').addClass('in');
-      $('#searchModal').css('display', 'block');
-      $('body').css('overflow', 'hidden');
-      $.post('functions.php', {type: 'search',key:searchValue}, function(e) {
-          
-          console.log(e);
-
-      });
-
-
-
-
-
-
-
-
-
-      
+    if (searchValue=='') {
       searchEl.removeClass('searchFocus');
     }
-    else{
-      searchEl.removeClass('searchFocus');
-    }
-    
   });
 })();
 

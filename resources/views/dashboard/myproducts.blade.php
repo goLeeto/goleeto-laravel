@@ -61,7 +61,7 @@
                                         @else
                                         <td> {{ $product['details']['rating']/$product['details']['ratingNo'] }}</td>
                                         @endif
-                                        <td> <a href="/myproducts/{{$product->id}}">Edit</a></td>
+                                        <td> <a href="{{url()->full()}}/{{$product->id}}">Edit</a></td>
                                     </tr>
 
                                     @php ($i++)

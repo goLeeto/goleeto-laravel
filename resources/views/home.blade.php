@@ -1,11 +1,7 @@
+@extends('layouts.homelayout')
 
-<!DOCTYPE html>
-<html lang="en">
-    @include('head')
-<body>
-    @include('header')
 
-    @include('loginForm')
+@section('container')
 
 <div class="container-fluid bodyContainer">
 @include('search')
@@ -72,32 +68,6 @@
 
 </div>
 
-
-@include('footer')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    @include('scripts')
     <script src="js/index.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/TweenMax.min.js"></script>
@@ -115,7 +85,4 @@
 
       });
     </script>
-
-
-</body>
-</html>
+@endsection

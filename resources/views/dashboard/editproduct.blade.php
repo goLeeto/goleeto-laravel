@@ -21,8 +21,9 @@
 		            <h4 class="title">Editing {{$product->name}}</h4> 
 		        </div>
 		        <div class="content ">
-		            <form method="POST" action="/editproduct" enctype="multipart/form-data">
+		            <form method="POST" action="/seller/editproduct" enctype="multipart/form-data">
 		            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+		            <input type="hidden" name="id" value="{{$product->id}}">
 
 
 		                <div class="row">
@@ -88,7 +89,7 @@
 		                                <label>Theme Preview</label>
 		                                <div class="row ">
 	                                		@foreach($product->images as $imagepath)
-			                                	<div class="col-md-3 editProductImages"><label class="imgContainer"><img src="../{{$imagepath->path}}" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="photos[]" value="{{$imagepath->id}}" class="hidden" autocomplete="off"></label></div>
+			                                	<div class="col-md-3 editProductImages"><label class="imgContainer"><img src="{{url('/')}}/{{$imagepath->path}}" alt="..." class="img-thumbnail img-check"><input type="checkbox" name="photos[]" value="{{$imagepath->id}}" class="hidden" autocomplete="off"></label></div>
 			                                @endforeach
 		                                </div>
 		                                <div class="row nomargin">

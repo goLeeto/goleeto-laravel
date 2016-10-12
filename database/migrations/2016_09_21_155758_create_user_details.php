@@ -16,7 +16,6 @@ class CreateUserDetails extends Migration
         Schema::create('userDetails', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('UserId')->unsigned();
-            $table->string('email');
             $table->integer('address')->unsigned()->default(1);
             $table->dateTime('birthdate');
             $table->timestamps();

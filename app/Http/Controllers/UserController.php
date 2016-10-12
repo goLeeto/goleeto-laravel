@@ -61,9 +61,26 @@ class UserController extends Controller
 		$user->details;
         $user->details->addr;
 
+
+        $themes = \DB::table('products')
+                                ->where('userId','=',$user->id)
+                                ->count();
+
+
+        $sales =\DB::table('products')
+                                ->join('sales','products.id','=','sales.productId')
+                                ->where('products.userId','=',$user->id);
+        
+        $revenue = $sales->sum('sales.value');
+
+        $saleNo = $sales->count();
+
     	return view('dashboard.user')->with([
             'user'=>$user,
-            'dashboardClass'=>'User Profile'
+            'dashboardClass'=>'User Profile',
+            'themes' => $themes,
+            'revenue' => $revenue,
+            'saleNo' => $saleNo
         ]);
     }
 
@@ -142,7 +159,7 @@ class UserController extends Controller
 
             $address->save();
 
-            return redirect('/userprofile');
+            return redirect('/seller/userprofile');
 
         }else{
 
@@ -161,7 +178,7 @@ class UserController extends Controller
 
             $userdetails->save();
 
-            return redirect('/userprofile');
+            return redirect('/seller/userprofile');
 
         }
     }
@@ -186,7 +203,7 @@ class UserController extends Controller
 
                 $user->save();
 
-                return redirect('/userprofile');
+                return redirect('/seller/userprofile');
 
             }else{
                 return view('dashboard.user',[
@@ -202,6 +219,32 @@ class UserController extends Controller
             'user'=>$user,
             'dashboardClass'=>'User Profile'
         ]);
+    }
+
+    public function settings(){
+        return view('dashboard.settings',[
+            'dashboardClass'=>'Settings'
+        ]);
+    }
+
+    public function sendreview(Request $request){
+        $review = $request['review'];
+        $pid = $request['pid'];
+
+        if (App\ProductComment::where('productId',$pid)->where('userId',Auth::user()->id)->count()>0) {
+            return back()->withErrors(['1 comment allowed']);
+        }else{
+
+
+
+        $comment = App\ProductComment::create([
+            'userId' => Auth::user()->id,
+            'productId' => $pid,
+            'comment' => $review,
+        ]);
+        }
+
+        return back();
     }
 
 }

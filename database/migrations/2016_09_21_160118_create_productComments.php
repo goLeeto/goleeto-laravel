@@ -14,6 +14,7 @@ class CreateProductComments extends Migration
     public function up()
     {
         Schema::create('productComments', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('userId')->unsigned();
             $table->integer('productId')->unsigned();
             $table->string('comment');

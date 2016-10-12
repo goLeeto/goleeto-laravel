@@ -28,6 +28,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public function type(){
+        return $this->belongsTo('App\UserType','UserType');
+    }
+
     //Get User Details
 
     public function details(){
@@ -43,8 +48,8 @@ class User extends Authenticatable
     //Get User Sales
 
     public function sales(){
-    return $this->hasMany('App\Sale','userId');
-}
+        return $this->hasMany('App\Sale','userId');
+    }
 
 
 }

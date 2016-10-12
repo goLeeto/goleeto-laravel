@@ -7,7 +7,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="content modal-content">
-            <form method="POST" action="/addproduct" enctype="multipart/form-data">
+            <form method="POST" action="/seller/addproduct" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 

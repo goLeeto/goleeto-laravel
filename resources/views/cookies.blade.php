@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html>
-	@include('head')
-	<style type="text/css">
-		p{
-			margin-left: 30px;
-		}
-	</style>
-<body>
+@extends('layouts.homelayout')
 
-	@include('header')
-	@include('loginForm')
 
-	<div class="container-fluid bodyContainer">
-
-		@include('search')
-
-		<div class="container">
+@section('container')
+		<style type="text/css">
+			p{
+				margin-left: 30px;
+			}
+		</style>
+		<div class="container bodyContainer">
 			<h3>What Are Cookies</h3>
 
 			<p>
@@ -85,8 +77,4 @@
 			</p>
 		</div>
 	</div>
-
-	@include('footer')
-    @include('scripts')
-</body>
-</html>
+@endsection

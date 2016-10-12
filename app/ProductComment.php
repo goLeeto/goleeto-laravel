@@ -13,11 +13,16 @@ class productComment extends Model
      * @var array
      */
     protected $fillable = [
-       
+       'userId','productId','comment'
     ];
 
 
 
 
     protected $table = 'productComments';
+
+
+    public function user(){
+    	return $this->belongsTo('App\User','userId');
+    }
 }

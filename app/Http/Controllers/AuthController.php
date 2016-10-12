@@ -9,21 +9,35 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Foundation\Auth\ResetsPasswords;
+
 class AuthController extends Controller
 {
+
+
+    use ResetsPasswords;
     /**
      * Handle an authentication attempt.
      *
      * @return Response
      */
+
+
+    protected $redirectTo = '/';
+
+    
     public function login(Request $request)
-    {   $data = $request->only('username','password');
+    {   $data = $request->only('username','password','id','page');
         $username = $data['username'];
         $password = $data['password'];
+        $id=$data['id'];
+        $page = $data['page'];
         
         if (Auth::attempt(['username' => $username, 'password' => $password])) {
-
-            return redirect()->intended('/dashboard');
+            if ($id!=NULL) {
+                return redirect()->intended('/'.$page.'/'.$id);
+            }
+            return redirect()->intended(strtolower(Auth::user()->type->type).'/dashboard');
         }else{
             return redirect()->intended('/');
         }
@@ -51,16 +65,6 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->intended('/');
     }
-
-
-    public function getAuth(){
-        if (Auth::check()) {
-            return 'po';
-        }else{
-            return 'jo';
-        }
-    }
-
 
 
 

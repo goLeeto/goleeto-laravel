@@ -23,7 +23,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="content modal-content">
-                    <form method="POST" action="/changepassword">
+                    <form method="POST" action="/seller/changepassword">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
@@ -62,11 +62,11 @@
                 <div class="col-lg-4 col-md-5">
                     <div class="card card-user">
                         <div class="image">
-                            <img src="assets/img/background.jpg" alt="..."/>
+                            <img src="{{url('/')}}/assets/img/background.jpg" alt="..."/>
                         </div>
                         <div class="content">
                             <div class="author">
-                              <img class="avatar border-white" src="assets/img/faces/face-2.jpg" alt="..."/>
+                              <img class="avatar border-white" src="{{url('/')}}/assets/img/faces/face-2.jpg" alt="..."/>
                               <h4 class="title">{{$user->FirstName}} {{$user->LastName}}<br />
                                  <a href="#"><small>@</small><small>{{$user->UserName}}</small></a>
                               </h4>
@@ -81,13 +81,13 @@
                         <div class="text-center">
                             <div class="row">
                                 <div class="col-md-3 col-md-offset-1">
-                                    <h5>12<br /><small>Files</small></h5>
+                                    <h5>{{$themes}}<br /><small>Themes</small></h5>
                                 </div>
                                 <div class="col-md-4">
-                                    <h5>2GB<br /><small>Used</small></h5>
+                                    <h5>{{$saleNo}}<br /><small>Sales</small></h5>
                                 </div>
                                 <div class="col-md-3">
-                                    <h5>24,6$<br /><small>Spent</small></h5>
+                                    <h5>{{$revenue}}<span>$</span><br /><small>Revenue</small></h5>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                             <span data-toggle="modal" data-target="#changePasswordModal" class="pull-right changePassword" >Change Password</span>
                         </div>
                         <div class="content">
-                            <form method="POST" action="/updateinfo">
+                            <form method="POST" action="/seller/updateinfo">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="row">
                                     

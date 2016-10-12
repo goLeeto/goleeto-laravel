@@ -8,31 +8,31 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="/">
-                    <img src="../css/images/leeto.png" height="50px">
+                    <img src="{{url('/')}}/css/images/leeto.png" height="50px">
                 </a>
             </div>
 
             <ul class="nav">
                 <li @if($dashboardClass=='Dashboard') class="active" @endif>
-                    <a href="/dashboard">
+                    <a href="/seller/dashboard">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li @if($dashboardClass=='User Profile') class="active" @endif>
-                    <a href="/userprofile">
+                    <a href="/seller/userprofile">
                         <i class="ti-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 <li @if($dashboardClass=='My Products') class="active" @endif>
-                    <a href="/myproducts">
+                    <a href="/seller/myproducts">
                         <i class="ti-view-list-alt"></i>
                         <p>My Products</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/statistics">
+                    <a href="/seller/statistics">
                         <i class="ti-stats-up"></i>
                         <p>Statistics</p>
                     </a>
