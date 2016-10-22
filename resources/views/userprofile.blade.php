@@ -2,41 +2,50 @@
 
 @section('container')
 
+@php($date = date_format($user->created_at,'Y/m/d'))
+
 
 <div class="container bodyContainer profile">
                 <div class="row">
                     <div class="col-md-5 pull-left">
                         <div>
-                            <div class="profile_image"><img src="https://wrapbootstrap.com/static/users/pictures/StartBootstrap.png" width="120" height="120" alt="StartBootstrap" title="StartBootstrap"></div>
+                            <div class="profile_image"><img src="https://wrapbootstrap.com/static/users/pictures/StartBootstrap.png" width="120" height="120" alt="StartBootstrap" title="StartBootstrap">
+                            To Do Photo
+                            </div>
                             <div >
-                                <p><strong>Signed up:</strong><br>2 years ago</p>
-                                <p><strong>Location:</strong><br>Orlando, FL</p>
+                                <p><strong>Signed up:</strong><br>{{$date}}</p>
+                                <p><strong>Location:</strong><br>{{$user->details->addr->City}}</p>
                             </div>
                         </div>
-                        <p class="website"><strong>Website:</strong><br><a href="http://startbootstrap.com" target="_blank" rel="nofollow">http://goleeto.com</a></p>
+                        <p class="website"><strong>Website:</strong><br><a href="http://gooleeto.com" target="_blank" rel="nofollow">To do In Case we need it</a></p>
                     </div>
                     <div class="col-md-7 pull-right">
                         <div id="about">
                             <div class="image">
-                            <div><img src="https://wrapbootstrap.com/static/users/banners/StartBootstrap.png" width="580" height="200" title="StartBootstrap" alt="StartBootstrap"></div>
+                            <div><img src="https://wrapbootstrap.com/static/users/banners/StartBootstrap.png" width="580" height="200" title="StartBootstrap" alt="StartBootstrap">
+                            To Do Photo
+                            </div>
                             </div>
                             <div class="bio">
-                                <p>Hi there! We are Start Bootstrap, and we make functional, stylish Bootstrap themes! All of our themes come with dedicated email support, so please feel free to email us using the form on our profile page, or leave a comment on one of our themes and we will get back to you as soon as possible.</p>
-<p>Thanks for choosing Start Bootstrap for your next project!</p>
+                                <p>
+                                    To Do the bio
+                                </p>
                             </div>
                         </div>
                         <h2 >Contact</h2>
                         <div id="contact">
-                            <p>You must <a href="/login/user/1" title="Sign in or sign up">sign in</a> to send a message to StartBootstrap</p>
+                            @if(!Auth::check())
+                                <p>You must <a href="/login/user/{{$user->id}}" title="Sign in or sign up">sign in</a> to send a message to StartBootstrap</p>
+                            @endif
                             <form method="post">
                                 <fieldset>
                                     <div class="clearfix">
                                         <div class="input">
-                                            <textarea disabled="disabled" tabindex="1" class="xxlarge" id="message" name="body" placeholder="Enter your message to the seller." rows="4"></textarea>
+                                            <textarea @if(!Auth::check()) disabled="disabled" @endif tabindex="1" class="xxlarge" id="message" name="body" placeholder="Enter your message to the seller." rows="4"></textarea>
                                         </div>
                                     </div>
                                     <div>
-                                        <input disabled="disabled" tabindex="2" type="submit" class="btn primary large" value="Send message"> <span>Be polite and professional. <strong>Spam will not be tolerated.</strong></span>
+                                        <input  @if(!Auth::check()) disabled="disabled" @endif tabindex="2" type="submit" class="btn primary large" value="Send message">
                                     </div>
                                 </fieldset>
                             </form>
@@ -45,19 +54,86 @@
                 </div>
                 <div class="row portfolio">
                 <h2 >Portfolio</h2>
-                        <div id="portfolio">
-                        <div class="image col-md-3">
-                            <a href="/theme/spectrum-multipurpose-parallax-theme-WB0317BRF" title="Spectrum - Multipurpose Parallax Theme"><img src="//d85wutc1n854v.cloudfront.net/live/products/600x375/WB0317BRF.png" title="Spectrum - Multipurpose Parallax Theme" alt="Spectrum - Multipurpose Parallax Theme"></a>
-                        </div>
-                        <div class="image col-md-3">
-                            <a href="/theme/vitality-multipurpose-one-page-theme-WB02K3KK3" title="Vitality - Multipurpose One Page Theme"><img src="//d85wutc1n854v.cloudfront.net/live/products/600x375/WB02K3KK3.png" title="Vitality - Multipurpose One Page Theme" alt="Vitality - Multipurpose One Page Theme"></a>
-                        </div>
-                        <div class="image col-md-3">
-                            <a href="/theme/flex-admin-responsive-admin-template-WB032SCB1" title="Flex Admin - Responsive Admin Template"><img src="//d85wutc1n854v.cloudfront.net/live/products/600x375/WB032SCB1.png"title="Flex Admin - Responsive Admin Template" alt="Flex Admin - Responsive Admin Template"></a>
-                        </div>
+                        <div id="portfolio" class="text-center">
+                            @foreach($user->products as $product)
+                            <div class="col-md-4 col-sm-6 hero-feature">
+                                <div class="thumbnail">
+                                    <a href="{{url('/')}}/products/{{$product->id}}"><h4>{{$product->name}}</h4></a>
+                                    <div class="img">
+                                        @php($i=0)
+                                        @foreach($product->images as $images)
+                                            @if($i==0)
+                                                <img class="showItem" src="../{{$images->path}}" />
+                                            @elseif($i!=0)
+
+                                                <img class="hideItem" src="../{{$images->path}}" />
+                                            @endif
+                                        @php($i++)
+                                        @endforeach
+                                        <a class="left changeImage">
+                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="right changeImage">
+                                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </div>
                     
                 </div>
             </div>
+            <script type="text/javascript">
+            $('.changeImage.left').click(function() {
+                var el=$(this).parent().children('img');
+                for (var i = el.length - 1; i >= 0; i--) {
+                    if ($(el[i]).attr('class')=='showItem' && i==0) {
+                        $(el[i]).hide('slow/400/fast');
+                        $(el[el.length-1]).show('slow/400/fast');
+                        
+                            $(el[i]).attr('class', 'hideItem');
+                            $(el[el.length-1]).attr('class', 'showItem');
+                        
+                        break;
+                    }else if($(el[i]).attr('class')=='showItem' ){
+                        console.log('majtas');
+                        $(el[i]).hide('slow/400/fast');
+                        $(el[i-1]).show('slow/400/fast');
+                        
+                            $(el[i]).attr('class', 'hideItem');
+                            $(el[i-1]).attr('class', 'showItem');
+                        
+                        break;
+                    }
+                }
+                
+            });
+            $('.changeImage.right').click(function() {
+                var el=$(this).parent().children('img');
+                for (var i = el.length - 1; i >= 0; i--) {
+                    if ($(el[i]).attr('class')=='showItem' && i==el.length-1) {
+                        $(el[i]).hide('slow/400/fast');
+                        $(el[0]).show('slow/400/fast');
+                        
+                            $(el[i]).attr('class', 'hideItem');
+                            $(el[0]).attr('class', 'showItem');
+                        
+                        break;
+                    }else if($(el[i]).attr('class')=='showItem' ){
+                        $(el[i]).hide('slow/400/fast');
+                        $(el[i+1]).show('slow/400/fast');
+                        
+                            $(el[i]).attr('class', 'hideItem');
+                            $(el[i+1]).attr('class', 'showItem');
+                        
+                        break;
+                    }
+                }
+                
+            });
+        </script>
 
 @endsection

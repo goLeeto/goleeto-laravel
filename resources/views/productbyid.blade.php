@@ -35,6 +35,7 @@
 	            <div class="col-md-9">
 
 	                <div class="thumbnail">
+	                <a href="{{url('/')}}/preview/{{$product->id}}"> Preview</a>
 	                    <div class="img text-center">
 							@php($i=0)
 							@foreach($product->images as $images)
@@ -56,7 +57,11 @@
 							</a>
 						</div>
 	                    <div class="caption-full">
-	                        <h4 class="pull-right"><span>$</span>{{$product->price}}</h4>
+	                    @if(isset($product->discount->value))
+	                        <h4 class="pull-right"><span>$</span>{{$product->discount->value}}</h4>
+	                    @else
+	                     	<h4 class="pull-right"><span>$</span>{{$product->price}}</h4>
+	                    @endif
 	                        <h4>{{$product->name}}</h4>
 	                        <p>
 	                        	{{$product->details->description}}
@@ -93,7 +98,17 @@
 	                		<input type="hidden" name="pid" value="{{$product->id}}">
 	                			<div class="form-group">
 		                			<div class="row">
-			                			<div class="col-md-9">
+		                				<div class="col-md-3 ratediv">
+		                					<fieldset class="rating">
+											    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+											    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+											    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+											    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+											    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+											</fieldset>
+		                					
+		                				</div>
+			                			<div class="col-md-6">
 			                				<input name="review" type="text" class="form-control" placeholder="Review" required>
 			                			</div>
 			                			<div class="col-md-3">

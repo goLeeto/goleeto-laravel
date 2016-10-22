@@ -20,7 +20,45 @@
         @include('dashboard.addproduct')
 
 
+        <!-- Discount -->
 
+        <div id="discount" class="modal fade">
+            <div class="card modal-content">
+                <div class="header modal-header">
+                    <h4 class="title">Discount</h4> 
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="content modal-content">
+                    <form method="POST" action="/seller/discount" enctype="multipart/form-data">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="themeid" id="themeid">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Promotional Price </label>
+                                        <input name="price" type="text" class="form-control border-input" placeholder="$$$">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Valid Until </label>
+                                        <input name="valid" type="date" class="form-control border-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-info btn-fill btn-wd">Add Discount</button>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- //// Discount -->
 
 
 
@@ -39,11 +77,12 @@
                         <div class="content table-responsive table-full-width">
                             <table class="table table-striped">
                                 <thead>
-                                    <th>id</th>
-                                	<th>name</th>
-                                	<th>price</th>
-                                	<th>description</th>
-                                    <th>rating</th>
+                                    <th>Id</th>
+                                	<th>Name</th>
+                                	<th>Price</th>
+                                	<th>Description</th>
+                                    <th>Rating</th>
+                                    <th>Discount</th>
 
                                 </thead>
                                 <tbody>
@@ -61,6 +100,7 @@
                                         @else
                                         <td> {{ $product['details']['rating']/$product['details']['ratingNo'] }}</td>
                                         @endif
+                                        <td> <span data-toggle="modal" data-target="#discount" class="changePassword addDiscount" onclick="addId({{$product->id}})">Add Discount</span></td>
                                         <td> <a href="{{url()->full()}}/{{$product->id}}">Edit</a></td>
                                     </tr>
 
@@ -80,4 +120,11 @@
             </div>
         </div>
     </div>
+
+    <!-- Add theme id in discount modal -->
+    <script type="text/javascript">
+        function addId(id){
+            $('#themeid').val(id);
+        }
+    </script>
 @endsection

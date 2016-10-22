@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App;
 
+use Mail;
+
 class HomeController extends Controller
 {
     public function getProducts(){
@@ -20,6 +22,7 @@ class HomeController extends Controller
     		$product->images;
     		$product->productCategorys;
     		$product->productFeatures;
+            $product->discount;
     	}
 
     	return view('products',[
@@ -35,6 +38,7 @@ class HomeController extends Controller
         $product->images;
         $product->productCategorys;
         $product->productFeatures;
+        $product->discount;
         $categories = App\Category::all();
 
         
@@ -95,14 +99,40 @@ class HomeController extends Controller
 
 
         return view('userprofile',[
-            'className' => 'No Class'
+            'className' => 'No Class',
+            'user' => $user
         ]);
-
-
 
     }
 
+public function contact(Request $request){
+    $data = $request->only('name','email','message');
 
+}
+
+
+public function getPreview($id){
+ 
+
+    $product = App\Product::find($id);
+
+    
+
+    if(file_exists($product->themePath.'/index.html')){
+        $src = url('/').'/'.$product->themePath.'/index.html';
+    }else if(file_exists($product->themePath.'/index.php')){
+        $src = url('/').'/'.$product->themePath.'/index.php';
+    }else{
+        $src = '/404';
+    }
+
+    return view('preview',[
+        'src' => $src,
+        'className' => 'No Class',
+        'productId' => $id,
+        'productName' => $product->name
+    ]);
+}
 
 
 

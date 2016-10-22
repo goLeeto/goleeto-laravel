@@ -31,7 +31,7 @@ class ProductController extends Controller
                     //Get Theme Preview
 
                     //To Do convert image to jpg, Resize image to a specific resolution
-                    $previewPath='themes/'.$data['name'].'/themePreviews';
+                    $previewPath='themes/'.uniqid().'/themePreviews';
 
                     $i=0;
                     foreach ($previews as $preview) {
@@ -50,6 +50,9 @@ class ProductController extends Controller
                     $archive->move($archivePath,$archiveName);
 
                     // Unzip theme
+                    $pathA = $archivePath.'/'.$archive->getClientOriginalName();
+
+                    $pathA = str_replace('.zip','', $pathA);
 
                     $archivePathName = $archivePath.'/'.$archiveName;
                     $zip = new \ZipArchive;
@@ -71,7 +74,7 @@ class ProductController extends Controller
         $newProduct = App\Product::create([
             'Name'=>$data['name'],
             'price'=>$data['price'],
-            'imgPath'=>$previewPath,
+            'themePath'=>$pathA,
             'userId'=>Auth::user()->id
         ]);
 
@@ -178,12 +181,64 @@ class ProductController extends Controller
             ]);
         }
 
-        return '';
+        $previews=$request->file('preview');
 
+        if ($previews!=null) {
+            $previewPath='themes/'.$data['name'].'/themePreviews';
 
+                foreach ($previews as $preview) {
+                    $previewName=$data['name'].uniqid().'.'.$preview->guessExtension();
+                    $preview->move($previewPath,$previewName);
+                    $previewImgPaths[] = $previewPath.'/'.$previewName;
+                    
+                }
+    
+                foreach ($previewImgPaths as $images) {
+                    \DB::table('productImages')->insert([
+                        'productId'=> $id,
+                        'path'=>$images
+                    ]);
+                }
+        }
 
+        if ($data['photos']!=null) {
+            foreach ($data['photos'] as $photo) {
+            $img = App\ProductImage::find($photo);
 
+            unlink($img->path);
+            $img->delete();
 
+            }
+        }
+
+        return redirect()->back();
+
+    }
+
+    public function discount(Request $request){
+
+        $data = $request->only('themeid','price','valid');
+
+        $discount = App\Discount::where('product_id',$data['themeid'])->where('user_id',Auth::user()->id)->first();
+
+        if ($discount) {
+            $discount->value = $data['price'];
+            $discount->validUntil = $data['valid'];
+            $discount->save();
+
+            return $discount;
+        }else{
+            $discount = App\Discount::create([
+                'product_id' => $data['themeid'],
+                'user_id' => Auth::user()->id,
+                'value' => $data['price'],
+                'validUntil' => $data['valid']
+            ]);    
+
+            return $discount;
+        }  
+
+        return redirect()->back();  
     }
 
 

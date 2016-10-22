@@ -17,7 +17,7 @@ class CreateProducts extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->double('price');
-            $table->string('imgPath');
+            $table->string('themePath');
             $table->integer('userId')->unsigned();
             $table->timestamps();
 

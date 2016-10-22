@@ -11,20 +11,24 @@ class productFeatures extends Seeder
      */
     public function run()
     {
-        DD::table('features')->insert([
-        	'name' => 'Category 1',
+        DB::table('features')->insert([
+        	'name' => 'Feature 1',
         	'description' =>'Description 1'
-        ],[
-        	'name' => 'Category 2',
+        ]);
+        DB::table('features')->insert([
+        	'name' => 'Feature 2',
         	'description' =>'Description 2'
-    	],[
-        	'name' => 'Category 3',
+    	]);
+        DB::table('features')->insert([
+        	'name' => 'Feature 3',
         	'description' =>'Description 3'
-    	],[
-        	'name' => 'Category 4',
+    	]);
+        DB::table('features')->insert([
+        	'name' => 'Feature 4',
         	'description' =>'Description 4'
-    	],[
-        	'name' => 'Category 5',
+    	]);
+        DB::table('features')->insert([
+        	'name' => 'Feature 5',
         	'description' =>'Description 5'
     	]);
     }

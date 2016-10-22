@@ -21,6 +21,13 @@ Route::get('/products','HomeController@getProducts');
 
 Route::get('/products/{id}','HomeController@getProductsById');
 
+Route::get('/preview/{id}', 'HomeController@getPreview');
+
+Route::get('/404', function() {
+    return view('404');
+});
+
+
 
 
 
@@ -55,7 +62,6 @@ Route::get('/cookies', function() {
 
 Route::post('/login', 'AuthController@login');
 
-
 Route::post('/register', 'AuthController@register');
 
 Route::get('/get', 'AuthController@getAuth');
@@ -65,10 +71,13 @@ Route::get('/search', 'HomeController@search');
 Route::get('user/{id}', 'HomeController@getUser');
 
 
+Route::post('/contact', 'HomeController@contact');
+
+
 
 Route::group(['middleware' => 'auth'], function () {
 
-		Route::post('/sendreview', 'UserController@sendreview');
+		Route::post('/sendreview', 'SellerController@sendreview');
 
 
 	    Route::get('/logout', 'AuthController@logOut');
@@ -86,31 +95,43 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::group(['prefix' => 'seller','middleware'=>'seller'], function() {
 
-		Route::get('/dashboard', 'UserController@dashboard');
+		Route::get('/dashboard', 'SellerController@dashboard');
 
-		Route::get('/userprofile', 'UserController@profile');
+		Route::get('/userprofile', 'SellerController@profile');
 
-		Route::get('/myproducts', 'UserController@myproducts');
+		Route::get('/myproducts', 'SellerController@myproducts');
 
-		Route::get('/statistics', 'UserController@statistics');
+		Route::get('/statistics', 'SellerController@statistics');
 
 		Route::get('myproducts/{id}', 'ProductController@getproduct');
 
-		Route::get('/settings', 'UserController@settings');
+		Route::get('/settings', 'SellerController@settings');
 
-		Route::post('/updateinfo', 'UserController@updateinfo');
+		Route::post('/updateinfo', 'SellerController@updateinfo');
 
-		Route::post('/changepassword', 'UserController@changepassword');
+		Route::post('/changepassword', 'SellerController@changepassword');
 
 		Route::post('/addproduct','ProductController@addproduct');
 
 		Route::post('/editproduct', 'ProductController@editproduct');
+
+		Route::post('/discount', 'ProductController@discount');
 	});
 
 
 
 
 	Route::group(['prefix' => 'buyer','middleware'=>'buyer'], function() {
+		
+		Route::post('/changepassword', 'BuyerController@changepassword');
+		
+		Route::get('/dashboard', 'BuyerController@dashboard');
+
+		Route::get('/userprofile', 'BuyerController@profile');
+
+		Route::get('/myproducts', 'BuyerController@products');
+
+
 	    
 	});
 

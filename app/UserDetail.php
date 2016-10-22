@@ -14,7 +14,7 @@ class userDetail extends Model
      * @var array
      */
     protected $fillable = [
-        'email','birthdate','UserId','address'
+        'email','birthdate','UserId','address','bio','profileImage','coverImage'
     ];
     protected $table = 'userDetails';
     

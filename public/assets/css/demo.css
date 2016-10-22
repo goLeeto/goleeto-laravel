@@ -86,7 +86,7 @@
 	width: 70%;
 }
 
-#addNewProduct{
+#addNewProduct,#discount{
 	margin:8vh auto;
 	width: 70%;
 }
@@ -201,6 +201,25 @@ ul{
     margin: 0px;
 }
 
+#changeCover{
+  position: absolute;
+  right: 10px;
+  opacity: 0;
+}
+#changeProfile{
+  position: absolute;
+  right: 20%;
+  top: 30%;
+  z-index: 100;
+  opacity: 0;
+}
+
+.image:hover > #changeCover{
+    opacity: 1;
+}
+.author:hover > #changeProfile{
+    opacity: 1;
+}
 
 
 

@@ -1,13 +1,13 @@
-@extends('layouts.seller')
+@extends('layouts.buyer')
 
 @section('title','User Profile')
 
 @section('sidebar')
-    @include('dashboard.sidebar')
+    @include('buyer.sidebar')
 @endsection
 
 @section('navbar')
-    @include('dashboard.navbar')
+    @include('buyer.navbar')
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="content modal-content">
-                    <form method="POST" action="/seller/changepassword">
+                    <form method="POST" action="/buyer/changepassword">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
@@ -82,14 +82,12 @@
                         <hr>
                         <div class="text-center">
                             <div class="row">
-                                <div class="col-md-3 col-md-offset-1">
-                                    <h5>{{$themes}}<br /><small>Themes</small></h5>
+                                <div class="col-md-5 col-md-offset-1">
+                                    <h5>{{$spent}}<span>$</span><br /><small>Total Spent</small></h5>
                                 </div>
-                                <div class="col-md-4">
-                                    <h5>{{$saleNo}}<br /><small>Sales</small></h5>
-                                </div>
-                                <div class="col-md-3">
-                                    <h5>{{$revenue}}<span>$</span><br /><small>Revenue</small></h5>
+
+                                <div class="col-md-5">
+                                    <h5>{{$purchases}}<br /><small>Total Purchases</small></h5>
                                 </div>
                             </div>
                         </div>

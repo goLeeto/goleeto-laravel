@@ -13,7 +13,7 @@ class product extends Model
      * @var array
      */
     protected $fillable = [
-    'Name','price','imgPath','userId'
+    'Name','price','themePath','userId'
     ];
 
 
@@ -43,6 +43,9 @@ class product extends Model
         return $this->hasMany('App\ProductImage','productId');
     }
 
+    public function discount(){
+        return $this->hasOne('App\Discount','product_id');
+    }
 
 
     public function productFeatures(){

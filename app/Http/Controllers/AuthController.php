@@ -49,16 +49,16 @@ class AuthController extends Controller
            'UserName' => $data['username'],
            'FirstName' => ucfirst($data['firstname']),
            'LastName' => ucfirst($data['lastname']),
+           'email' => $data['email'],
            'UserType' => $data['accType'],
            'password' => bcrypt($data['password']),
        ]);
         
         $userdetails = \App\UserDetail::create([
             'UserId' => $user->id,
-            'email' => $data['email'],
             'birthdate' => $data['birthdate']
         ]);
-        return redirect()->intended('/dashboard');
+        return redirect()->intended('/');
     }
 
     public function logOut(){

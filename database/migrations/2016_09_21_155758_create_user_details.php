@@ -18,6 +18,9 @@ class CreateUserDetails extends Migration
             $table->integer('UserId')->unsigned();
             $table->integer('address')->unsigned()->default(1);
             $table->dateTime('birthdate');
+            $table->string('bio')->default('');
+            $table->string('profileImage')->default('');
+            $table->string('coverImage')->default('');
             $table->timestamps();
 
 
