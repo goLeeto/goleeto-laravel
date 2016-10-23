@@ -102,16 +102,7 @@ class BuyerController extends Controller
     				$query->where('userId','=',Auth::user()->id);
     	})->get();
 
-    	
 
-
-
-    	// \DB::table('products')
-    	// 								->join('sales','products.id','sales.productId')
-    	// 								->get();
-
-
-    	//return $products;
 
     	return view('buyer.myproducts',[
     		'dashboardClass' => 'My Products',
@@ -120,6 +111,42 @@ class BuyerController extends Controller
     }
 
 
+    public function download($user,$theme){
+    	if (Auth::user()->id == $user) {
+    		
+	    	$products = App\Product::whereHas('sales',function($query){
+	    				$query->where('userId','=',Auth::user()->id);
+	    	})->where('id',$theme)->get();
+
+	    	foreach ($products as $product) {
+	    		$product->details;
+	    	}
+
+	    	$pathToFile = storage_path().'/themes/'.$products[0]->name.'/'.$products[0]->name.'.zip';
+
+	    	return response()->download($pathToFile);
+
+    	}
+
+
+    }
+
+    public function messages(){
+    	return "Messages";
+    }
+
+
 
     
+
+
+
+
+
+
+
+
+
+
+
 }

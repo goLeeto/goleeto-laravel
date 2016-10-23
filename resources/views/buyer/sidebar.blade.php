@@ -32,6 +32,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/buyer/messages">
+                        <i class="ti-email"></i>
+                        <p>Messages</p>
+                    </a>
+                </li>
+                <li>
                     <a href="notifications.html">
                         <i class="ti-bell"></i>
                         <p>Notifications</p>

@@ -32,13 +32,13 @@ class ProductController extends Controller
 
                     //To Do convert image to jpg, Resize image to a specific resolution
                     $previewPath='themes/'.uniqid().'/themePreviews';
-
+                    $previewPathName = 'themes/'.$data['name'].'/themePreviews';
                     $i=0;
                     foreach ($previews as $preview) {
                         $previewName=$data['name'].$i.'.'.$preview->guessExtension();
-                        $preview->move($previewPath,$previewName);
+                        $preview->move($previewPathName,$previewName);
                         $i++;
-                        $previewImgPaths[] = $previewPath.'/'.$previewName;
+                        $previewImgPaths[] = $previewPathName.'/'.$previewName;
                         
                     }
 
@@ -47,14 +47,14 @@ class ProductController extends Controller
                     //Get Theme Archive
 
                     $archiveName = $data['name'].'.'.$archive->guessExtension();
-                    $archive->move($archivePath,$archiveName);
+                    $archive->move('../storage/'.$archivePath,$archiveName);
 
                     // Unzip theme
                     $pathA = $archivePath.'/'.$archive->getClientOriginalName();
 
                     $pathA = str_replace('.zip','', $pathA);
 
-                    $archivePathName = $archivePath.'/'.$archiveName;
+                    $archivePathName = '../storage/'.$archivePath.'/'.$archiveName;
                     $zip = new \ZipArchive;
                     $zip->open($archivePathName);
                     $zip->extractTo($archivePath);
@@ -65,6 +65,8 @@ class ProductController extends Controller
 
 
 
+        }else{
+            return "Yuo must choose a category";
         }
 
         //No return Insert into database

@@ -38,9 +38,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
-                        <i class="ti-pencil-alt2"></i>
-                        <p>Icons</p>
+                    <a href="/seller/messages">
+                        <i class="ti-email"></i>
+                        <p>Messages</p>
                     </a>
                 </li>
                 <li>

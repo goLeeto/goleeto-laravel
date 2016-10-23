@@ -61,10 +61,6 @@
 			    }
 			    
 
-			    obj.style.height = obj.contentWindow.document.body.offsetHeight + 'px';
-
-
-
 			}else if (this.className == 'tablet') {
 
 			    var parentDivHeight = 768;
@@ -93,7 +89,6 @@
 				    });
 			    }
 
-			    obj.style.height = obj.contentWindow.document.body.offsetHeight + 'px';
 
 			}else if (this.className == 'mobile') {
 
@@ -123,9 +118,18 @@
 				    });
 			    }
 
-			    obj.style.height = obj.contentWindow.document.body.offsetHeight + 'px';
 
 			}
+
+				//obj.style.height = obj.contentWindow.document.body.offsetHeight + 'px';
+
+
+			if(obj.offsetHeight < obj.contentWindow.document.body.offsetHeight){
+				obj.style.height = obj.contentWindow.document.body.offsetHeight + 'px';
+
+			}
+
+			    
 		});
 	</script>
 @endsection

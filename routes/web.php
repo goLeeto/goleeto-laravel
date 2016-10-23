@@ -103,6 +103,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 		Route::get('/statistics', 'SellerController@statistics');
 
+		Route::get('/messages', 'SellerController@messages');
+
 		Route::get('myproducts/{id}', 'ProductController@getproduct');
 
 		Route::get('/settings', 'SellerController@settings');
@@ -130,6 +132,10 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/userprofile', 'BuyerController@profile');
 
 		Route::get('/myproducts', 'BuyerController@products');
+
+		Route::get('/messages', 'BuyerController@messages');
+
+		Route::post('/download/{user}/{theme}', 'BuyerController@download');
 
 
 	    

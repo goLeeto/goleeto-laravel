@@ -48,7 +48,12 @@
                                         @else
                                         <td> {{ $product['details']['rating']/$product['details']['ratingNo'] }}</td>
                                         @endif
-                                        <td> Download </td>
+                                        <td> 
+                                            <form method="POST" action="download/{{Auth::user()->id}}/{{$product->id}}">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                <button style="border-style: none; background: none;">Download</button>
+                                            </form> 
+                                        </td>
                                     </tr>
 
                                     @php ($i++)

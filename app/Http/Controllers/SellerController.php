@@ -274,4 +274,14 @@ class SellerController extends Controller
         return back();
     }
 
+
+    public function messages(){
+        return "messages";
+    }
+
+
+
+
+
+
 }
