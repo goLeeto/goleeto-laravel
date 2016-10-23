@@ -58,6 +58,12 @@ class AuthController extends Controller
             'UserId' => $user->id,
             'birthdate' => $data['birthdate']
         ]);
+
+        if (Auth::attempt(['username' => $data['username'], 'password' => $data['password']])) {
+            
+            return redirect()->intended(strtolower(Auth::user()->type->type).'/dashboard');
+        }
+
         return redirect()->intended('/');
     }
 
