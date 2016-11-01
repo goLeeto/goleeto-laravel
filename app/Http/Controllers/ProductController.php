@@ -66,7 +66,7 @@ class ProductController extends Controller
 
 
         }else{
-            return "Yuo must choose a category";
+            return "You must choose a category";
         }
 
         //No return Insert into database

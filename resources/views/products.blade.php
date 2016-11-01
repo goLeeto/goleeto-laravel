@@ -42,15 +42,23 @@
 										</span>
 									</p>
 									<p class="pull-right">
-										<a href=""><i class="fa fa-star-o" aria-hidden="true"></i></a>
-										<a href=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
+										@if(isset($product->discount->value) && ($product->discount->validUntil >= date("Y-m-d")))
+					                        <h4 class="pull-right"><span>$</span>{{$product->discount->value}}</h4>
+					                    @else
+					                     	<h4 class="pull-right"><span>$</span>{{$product->price}}</h4>
+					                    @endif
 									</p>
 								</div>
 								
 								<p>{{$product->details->description}} </p>
 								
 								<p>
-									<a href="#" class="btn btn-primary">Buy Now!</a> <a href="/products/{{$product->id}}" class="btn btn-default">More Info</a>
+									@if(Auth::check() && Auth::user()->UserType == 3)
+										<a href="/addtocart/{{$product->id}}" class="btn btn-primary">Add To Cart!</a>
+									@elseif(!Auth::check())
+										<a href="/login/1" class="btn btn-primary">Log in ...</a>
+									@endif
+									<a href="/products/{{$product->id}}" class="btn btn-default">More Info</a>
 								</p>
 							</div>
 							

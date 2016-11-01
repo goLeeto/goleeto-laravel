@@ -13,9 +13,7 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('home',['className' => 'home']);
-});
+Route::get('/', 'HomeController@home');
 
 Route::get('/products','HomeController@getProducts');
 
@@ -31,9 +29,7 @@ Route::get('/404', function() {
 
 
 
-Route::get('/about', function() {
-    return view('about',['className' => 'about']);
-});
+Route::get('/about', 'HomeController@about');
 
 Route::get('/login', function() {
     return view('loginPage')->with([
@@ -42,10 +38,16 @@ Route::get('/login', function() {
 })->middleware('guest');
 
 
-Route::get('/login/user/{id}', function($id) {
+Route::get('/login/{id}', function($id) {
     return view('loginPage')->with([
     	'id' => $id,
-    	'page' => 'user'
+     ]);
+})->middleware('guest');
+
+Route::get('/login/{id}/{id2}', function($id, $id2) {
+    return view('loginPage')->with([
+    	'id' => $id,
+    	'id2' => $id2
      ]);
 })->middleware('guest');
 
@@ -81,6 +83,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	    Route::get('/logout', 'AuthController@logOut');
+
+	    Route::post('/sendmessage/{userid}', 'MessageController@sendmessage');
 		
 
 
@@ -104,6 +108,8 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/statistics', 'SellerController@statistics');
 
 		Route::get('/messages', 'SellerController@messages');
+
+		Route::get('/messages/{id}', 'SellerController@messagesById');
 
 		Route::get('myproducts/{id}', 'ProductController@getproduct');
 
@@ -135,11 +141,21 @@ Route::group(['middleware' => 'auth'], function () {
 
 		Route::get('/messages', 'BuyerController@messages');
 
+		Route::get('/messages/{id}', 'BuyerController@messagesById');
+
 		Route::post('/download/{user}/{theme}', 'BuyerController@download');
 
+		Route::get('/shop', 'BuyerController@shop');
 
+		Route::post('/removefromcart/{id}','BuyerController@removefromcart');
+
+		Route::post('/removeallfromcart', 'BuyerController@removeallfromcart');
 	    
 	});
+
+	Route::get('/addtocart/{id}', 'BuyerController@addtocart')
+															->middleware('buyer');
+
 
 
 

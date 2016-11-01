@@ -57,7 +57,8 @@
 							</a>
 						</div>
 	                    <div class="caption-full">
-	                    @if(isset($product->discount->value))
+	                    @if(isset($product->discount->value) && ($product->discount->validUntil >= date("Y-m-d")))
+
 	                        <h4 class="pull-right"><span>$</span>{{$product->discount->value}}</h4>
 	                    @else
 	                     	<h4 class="pull-right"><span>$</span>{{$product->price}}</h4>

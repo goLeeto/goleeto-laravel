@@ -13,6 +13,18 @@
 	
 </head>
 <body>
+
+
+@if(Auth::check())
+  @if(Auth::user()->UserType == 3)
+  <div class="shopping-cart">
+    <a href="/buyer/shop"></a>
+    <span class="shop-items">{{$items}}</span>
+  </div>
+
+  @endif
+@endif
+
 <div class="row" id="menu-div">
     <div id="templateMenu" class="navbar navbar-default " role="navigation">
         <div class="container-fluid">

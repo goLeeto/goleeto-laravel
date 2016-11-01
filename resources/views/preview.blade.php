@@ -121,13 +121,12 @@
 
 			}
 
-				//obj.style.height = obj.contentWindow.document.body.offsetHeight + 'px';
+			obj.style.height = obj.contentWindow.document.body.offsetHeight + 'px';
 
 
-			if(obj.offsetHeight < obj.contentWindow.document.body.offsetHeight){
-				obj.style.height = obj.contentWindow.document.body.offsetHeight + 'px';
-
-			}
+			// if(obj.offsetHeight < obj.contentWindow.document.body.offsetHeight){
+			// 	obj.style.height = obj.contentWindow.document.body.offsetHeight + 'px';
+			// }
 
 			    
 		});

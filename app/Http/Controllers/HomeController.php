@@ -10,10 +10,48 @@ use App;
 
 use Mail;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
+
+    public function home(){
+
+        if(Auth::check()){
+            $items = \App\Cart::where('user_id',Auth::user()->id)->count();
+        }else{
+            $items = '';
+        }
+
+        return view('home',[
+            'className' => 'home',
+            'items' => $items
+        ]);
+    }
+
+    public function about() {
+        if(Auth::check()){
+            $items = \App\Cart::where('user_id',Auth::user()->id)->count();
+        }else{
+            $items = '';
+        }
+
+        return view('about',[
+            'className' => 'about',
+            'items' =>$items
+            ]);
+    }
+    
+
     public function getProducts(){
     	$products = \App\Product::all()->sortByDesc('price');
+        if(Auth::check()){
+            $items = \App\Cart::where('user_id',Auth::user()->id)->count();
+        }else{
+            $items = '';
+        }
+
+
 
     	foreach ($products as $product) {
     		$product->details;
@@ -27,11 +65,19 @@ class HomeController extends Controller
 
     	return view('products',[
     		'className' => 'products',
-    		'products' => $products
+    		'products' => $products,
+            'items' => $items
     	]);
     }
 
     public function getProductsById($id){
+        if(Auth::check()){
+            $items = \App\Cart::where('user_id',Auth::user()->id)->count();
+        }else{
+            $items = '';
+        }
+
+
         $product = \App\Product::find($id);
         $product->details;
         $product->sales;
@@ -51,12 +97,19 @@ class HomeController extends Controller
         return view('productbyid',[
             'className'=>'products',
             'product' =>$product,
-            'categories'=>$categories
+            'categories'=>$categories,
+            'items' => $items
         ]);
     }
 
 
     public function search(Request $request){
+        if(Auth::check()){
+            $items = \App\Cart::where('user_id',Auth::user()->id)->count();
+        }else{
+            $items = '';
+        }
+
         $name = $request['search'];
 
         $products =\App\Product::where('name','like','%'.$name.'%')->get();
@@ -74,7 +127,8 @@ class HomeController extends Controller
 
         return view('products',[
             'className' => 'products',
-            'products' => $products
+            'products' => $products,
+            'items' => $items
         ]);
 
 
@@ -83,6 +137,16 @@ class HomeController extends Controller
 
 
     public function getUser($id){
+        if(Auth::check()){
+            $items = \App\Cart::where('user_id',Auth::user()->id)->count();
+        }else{
+            $items = '';
+        }
+
+        if (Auth::check() &&  Auth::user()->id == $id) {
+            return redirect()->intended(url('/').'/'.strtolower(Auth::user()->type->type).'/userprofile');
+        }
+
         
         $user = App\User::findOrFail($id);
 
@@ -100,19 +164,26 @@ class HomeController extends Controller
 
         return view('userprofile',[
             'className' => 'No Class',
-            'user' => $user
+            'user' => $user,
+            'items' => $items
         ]);
 
     }
 
 public function contact(Request $request){
+
     $data = $request->only('name','email','message');
 
 }
 
 
 public function getPreview($id){
- 
+    if(Auth::check()){
+        $items = \App\Cart::where('user_id',Auth::user()->id)->count();
+    }else{
+        $items = '';
+    }
+    
 
     $product = App\Product::find($id);
 
@@ -130,7 +201,8 @@ public function getPreview($id){
         'src' => $src,
         'className' => 'No Class',
         'productId' => $id,
-        'productName' => $product->name
+        'productName' => $product->name,
+        'items' => $items
     ]);
 }
 

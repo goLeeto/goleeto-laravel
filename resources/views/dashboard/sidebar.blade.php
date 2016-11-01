@@ -37,7 +37,7 @@
                         <p>Statistics</p>
                     </a>
                 </li>
-                <li>
+                <li @if($dashboardClass=='Messages') class="active" @endif>
                     <a href="/seller/messages">
                         <i class="ti-email"></i>
                         <p>Messages</p>

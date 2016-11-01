@@ -35,13 +35,14 @@
                         <h2 >Contact</h2>
                         <div id="contact">
                             @if(!Auth::check())
-                                <p>You must <a href="/login/user/{{$user->id}}" title="Sign in or sign up">sign in</a> to send a message to StartBootstrap</p>
+                                <p>You must <a href="/login/2/{{$user->id}}" title="Sign in or sign up">sign in</a> to send a message to StartBootstrap</p>
                             @endif
-                            <form method="post">
+                            <form method="POST" action="{{url('/')}}/sendmessage/{{$user->id}}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <fieldset>
                                     <div class="clearfix">
                                         <div class="input">
-                                            <textarea @if(!Auth::check()) disabled="disabled" @endif tabindex="1" class="xxlarge" id="message" name="body" placeholder="Enter your message to the seller." rows="4"></textarea>
+                                            <textarea @if(!Auth::check()) disabled="disabled" @endif tabindex="1" class="xxlarge" id="message" name="message" placeholder="Enter your message to the seller." rows="4" required></textarea>
                                         </div>
                                     </div>
                                     <div>

@@ -221,10 +221,35 @@ ul{
     opacity: 1;
 }
 
+.message-row{
+    display: block;
+    background-color: #f4f3ef;
+    height: 35px;
+    line-height: 35px;
+    color: rgba(0, 0, 0, 0.6);
+    padding-left: 20px;
+}
+.username-row{
+    display: block;
+    padding-left: 10px;
+}
 
-
-
-
+.messages-table tbody tr{
+    background: rgba(0, 0, 0, 0.08);
+}
+.messages-table tbody tr td a{
+    color: inherit;
+}
+.from-me{
+    float: right;
+}
+.from-other{
+    float: left;
+}
+.sendmessageInput{
+    width: 60%;
+    display: inline-block;
+}
 
 
 

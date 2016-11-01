@@ -13,7 +13,7 @@ class message extends Model
      * @var array
      */
     protected $fillable = [
-       
+       'from','to','message'
     ];
 
 

@@ -31,7 +31,7 @@
                         <p>My Products</p>
                     </a>
                 </li>
-                <li>
+                <li @if($dashboardClass=='Messages') class="active" @endif>
                     <a href="/buyer/messages">
                         <i class="ti-email"></i>
                         <p>Messages</p>
@@ -41,6 +41,12 @@
                     <a href="notifications.html">
                         <i class="ti-bell"></i>
                         <p>Notifications</p>
+                    </a>
+                </li>
+                <li @if($dashboardClass=='Shop') class="active" @endif>
+                    <a href="/buyer/shop" >
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        <p>Shop</p>
                     </a>
                 </li>
                 <li>

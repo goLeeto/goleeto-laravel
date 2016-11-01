@@ -288,6 +288,7 @@ class ComposerStaticInita9af2f29594055b0f8c2b528f94b22bb
         'CreateProductFeatures' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_160046_create_productFeatures.php',
         'CreateProducts' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_155904_create_products.php',
         'CreateSales' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_155916_create_sales.php',
+        'CreateShoppingCart' => __DIR__ . '/../..' . '/database/migrations/2016_10_29_105542_create_shopping_cart.php',
         'CreateUserDetails' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_155758_create_user_details.php',
         'CreateUserDetailsAddress' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_155747_create_user_details_address.php',
         'CreateUserType' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_155505_create_user_type.php',

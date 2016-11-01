@@ -274,10 +274,73 @@ class SellerController extends Controller
         return back();
     }
 
-
     public function messages(){
-        return "messages";
+
+        $id = Auth::user()->id;
+
+        $users = \DB::select(\DB::raw('
+            SELECT `to` as id,`username` as UserName FROM ( 
+            (SELECT `m`.`to`, `m`.`created_at`,`u`.`UserName` FROM messages m 
+            INNER JOIN users u ON m.to=u.id 
+            WHERE `from` = '.$id.') 
+            union 
+            (SELECT `m`.`from` , `m`.`created_at`, `u`.`UserName` 
+            FROM messages m 
+            inner join users u on m.from=u.id 
+            WHERE `to` = '.$id.' ) 
+            ORDER BY created_at desc )a 
+            GROUP BY `to`, `username` 
+            ORDER BY created_at desc'));
+
+
+        foreach ($users as $user) {
+            $messages[] = \DB::table('messages')
+                                                ->orWhere(function($query)use($user){
+                                                    $query->where('from',$user->id)
+                                                    ->where('to',Auth::user()->id);
+                                                })
+                                                ->orWhere(function ($query)use($user){
+                                                    $query->where('to',$user->id)
+                                                    ->where('from',Auth::user()->id);
+                                                })
+                                                ->orderBy('created_at','desc')
+                                                ->limit(1)
+                                                ->get();
+        }
+
+        return view('dashboard.messages',[
+            'dashboardClass' => 'Messages',
+            'users' => $users,
+            'messages' => $messages
+        ]);
     }
+
+    public function messagesById($id){
+
+        $user = App\User::find($id);
+
+        $messages = \DB::table('messages')
+                                        ->orWhere(function($query)use($id){
+                                            $query->where('from',$id)
+                                            ->where('to',Auth::user()->id);
+                                        })
+                                        ->orWhere(function ($query)use($id){
+                                            $query->where('to',$id)
+                                            ->where('from',Auth::user()->id);
+                                        })
+                                        ->orderBy('created_at','asc')
+                                        ->get();
+
+        return view('dashboard.messagesbyid',[
+            'dashboardClass' => 'Messages',
+            'user' => $user,
+            'messages' => $messages
+        ]);
+
+        return $messages;
+    }
+
+    
 
 
 
