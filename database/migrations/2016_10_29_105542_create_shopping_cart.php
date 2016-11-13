@@ -13,7 +13,7 @@ class CreateShoppingCart extends Migration
      */
     public function up()
     {
-        Schemea::create('shopping_cart',function(Blueprint $table){
+        Schema::create('shopping_cart',function(Blueprint $table){
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('product_id')->unsigned();
