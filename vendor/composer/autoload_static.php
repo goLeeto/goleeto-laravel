@@ -281,6 +281,7 @@ class ComposerStaticInita9af2f29594055b0f8c2b528f94b22bb
         'CreateDiscountTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_19_092548_create_discount_table.php',
         'CreateFeatures' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_160036_create_features.php',
         'CreateMessages' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_160130_create_messages.php',
+        'CreateNotificationsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_02_115517_create_notifications_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateProductCategory' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_155947_create_productCategory.php',
         'CreateProductComments' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_160118_create_productComments.php',

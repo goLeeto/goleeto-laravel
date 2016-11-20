@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App;
 
+Use DB;
+
 use Mail;
 
 use Illuminate\Support\Facades\Auth;
@@ -23,9 +25,40 @@ class HomeController extends Controller
             $items = '';
         }
 
+
+        $categories = App\Category::all();
+
+
+        foreach ($categories as $category) {
+            $products[] = \DB::table('products')
+                                            ->leftJoin('sales','products.id','=','sales.productId')
+                                            ->join('productCategorys','products.id','=','productCategorys.product_id')
+                                            ->join('categorys','productCategorys.category_id','=','categorys.id')
+                                            ->where('categorys.name','=',$category->name)
+                                            ->limit(4)
+                                            ->select('products.*')
+                                            ->get();
+        }
+
+
+        foreach ($products as $category) {
+            $photo = array();
+            foreach ($category as $product) {
+
+                $photo[] = \DB::table('productImages')
+                                                    ->where('productId',$product->id)
+                                                    ->limit(1)
+                                                    ->get();
+            }
+            $photos[] = $photo;
+            unset($photo);
+        }
+
         return view('home',[
             'className' => 'home',
-            'items' => $items
+            'items' => $items,
+            'products' => $products,
+
         ]);
     }
 
@@ -91,6 +124,7 @@ class HomeController extends Controller
         foreach ($product->comments as $comment) {
             $comment->user;
         }
+
 
 
         //return $product;

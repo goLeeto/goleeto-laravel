@@ -1,4 +1,4 @@
-@extends('layouts.seller')
+@extends('layouts.buyer')
 
 @section('title','Dashboard')
 

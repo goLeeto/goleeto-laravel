@@ -18,6 +18,7 @@ class CreateMessages extends Migration
             $table->integer('from')->unsigned();
             $table->integer('to')->unsigned();
             $table->string('message');
+            $table->tinyInteger('read');
             $table->timestamps();
 
             $table->foreign('from')->references('id')->on('users');

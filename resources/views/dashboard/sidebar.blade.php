@@ -31,30 +31,24 @@
                         <p>My Products</p>
                     </a>
                 </li>
-                <li>
+                <li @if($dashboardClass=='Statistics') class="active" @endif>
                     <a href="/seller/statistics">
                         <i class="ti-stats-up"></i>
                         <p>Statistics</p>
                     </a>
-                </li>
+                </li >
                 <li @if($dashboardClass=='Messages') class="active" @endif>
                     <a href="/seller/messages">
                         <i class="ti-email"></i>
                         <p>Messages</p>
                     </a>
                 </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="ti-map"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
+                <!-- <li>
                     <a href="notifications.html">
                         <i class="ti-bell"></i>
                         <p>Notifications</p>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="/logout">
                         <i class="fa fa-sign-out"></i>

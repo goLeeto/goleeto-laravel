@@ -33,11 +33,10 @@ class ProductController extends Controller
                     //To Do convert image to jpg, Resize image to a specific resolution
                     $previewPath='themes/'.uniqid().'/themePreviews';
                     $previewPathName = 'themes/'.$data['name'].'/themePreviews';
-                    $i=0;
+                    
                     foreach ($previews as $preview) {
-                        $previewName=$data['name'].$i.'.'.$preview->guessExtension();
+                        $previewName=$data['name'].uniqid().'.'.$preview->guessExtension();
                         $preview->move($previewPathName,$previewName);
-                        $i++;
                         $previewImgPaths[] = $previewPathName.'/'.$previewName;
                         
                     }
@@ -237,7 +236,6 @@ class ProductController extends Controller
                 'validUntil' => $data['valid']
             ]);    
 
-            return $discount;
         }  
 
         return redirect()->back();  

@@ -21,9 +21,6 @@
 
 
 
-
-
-
     <div id="mi-slider-container">
       <div class="sliderText text-center trendingDiv">
         Best From Categories!

@@ -44,7 +44,7 @@ Route::get('/login/{id}', function($id) {
      ]);
 })->middleware('guest');
 
-Route::get('/login/{id}/{id2}', function($id, $id2) {
+Route::get('/login/{id}/{id2?}', function($id, $id2) {
     return view('loginPage')->with([
     	'id' => $id,
     	'id2' => $id2
@@ -150,11 +150,12 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::post('/removefromcart/{id}','BuyerController@removefromcart');
 
 		Route::post('/removeallfromcart', 'BuyerController@removeallfromcart');
+
+		Route::get('/settings', 'BuyerController@settings');
 	    
 	});
 
-	Route::get('/addtocart/{id}', 'BuyerController@addtocart')
-															->middleware('buyer');
+	Route::get('/addtocart/{id}', 'BuyerController@addtocart')->middleware('buyer');
 
 
 

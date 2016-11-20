@@ -85,11 +85,13 @@
 	                        	</p>
 	                        @endif
 	                    </div>
+	                   @if(!Auth::check() || Auth::user()->type->id == 3)
 	                   <div class="row nomargin">
 		                	<div class="text-right">
-								<a href="#" class="btn btn-primary">Buy Now!</a>
+								<a href="/addtocart/{{$product->id}}" class="btn btn-primary">Add To Cart!</a>
 							</div>
 	                   </div>
+	                   @endif
 	                </div>
 
 	                <div class="well">

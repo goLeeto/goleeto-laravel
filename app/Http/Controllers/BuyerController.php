@@ -174,7 +174,9 @@ class BuyerController extends Controller
     }
 
     public function messagesById($id){
-
+        if ($id==Auth::user()->id) {
+            return redirect()->back();
+        }
         $user = App\User::find($id);
 
         $messages = \DB::table('messages')
@@ -188,6 +190,18 @@ class BuyerController extends Controller
                                         })
                                         ->orderBy('created_at','asc')
                                         ->get();
+
+
+        $msgupdate = \DB::table('messages')
+                                        ->orWhere(function($query)use($id){
+                                            $query->where('from',$id)
+                                            ->where('to',Auth::user()->id);
+                                        })
+                                        ->orderBy('created_at','asc');
+
+        $msgupdate->update(['read'=>0]);
+
+        
 
         return view('buyer.messagesbyid',[
             'dashboardClass' => 'Messages',
@@ -211,7 +225,7 @@ class BuyerController extends Controller
         try {
             $product = App\Product::find($id);
 
-            if ($product->discount->validUntil >= date("Y-m-d")) {
+            if (isset($product->discount->validUntil) && $product->discount->validUntil >= date("Y-m-d")) {
                 $price = $product->discount->value;
             }else {
                 $price = $product->price;
@@ -267,6 +281,12 @@ class BuyerController extends Controller
         ]);
     }
 
+
+    public function settings(){
+        return view('buyer.settings',[
+            'dashboardClass'=>'Settings'
+        ]);
+    }
     
 
 

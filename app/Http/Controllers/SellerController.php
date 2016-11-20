@@ -112,7 +112,9 @@ class SellerController extends Controller
 
     public function statistics(){
 
-            return 'These are statistics!';
+            return view('dashboard.statistics',
+                ['dashboardClass' => 'Statistics'
+            ]);
     }
 
     
@@ -316,7 +318,9 @@ class SellerController extends Controller
     }
 
     public function messagesById($id){
-
+       if ($id==Auth::user()->id) {
+            return redirect()->back();
+        }
         $user = App\User::find($id);
 
         $messages = \DB::table('messages')
@@ -330,6 +334,16 @@ class SellerController extends Controller
                                         })
                                         ->orderBy('created_at','asc')
                                         ->get();
+
+
+        $msgupdate = \DB::table('messages')
+                                        ->orWhere(function($query)use($id){
+                                            $query->where('from',$id)
+                                            ->where('to',Auth::user()->id);
+                                        })
+                                        ->orderBy('created_at','asc');
+
+        $msgupdate->update(['read'=>0]);
 
         return view('dashboard.messagesbyid',[
             'dashboardClass' => 'Messages',

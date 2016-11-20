@@ -37,12 +37,12 @@
                         <p>Messages</p>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="notifications.html">
                         <i class="ti-bell"></i>
                         <p>Notifications</p>
                     </a>
-                </li>
+                </li> -->
                 <li @if($dashboardClass=='Shop') class="active" @endif>
                     <a href="/buyer/shop" >
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>

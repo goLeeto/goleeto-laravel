@@ -17,7 +17,7 @@
 						<p>Stats</p>
                     </a>
                 </li>
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="ti-bell"></i>
                             <p class="notification">5</p>
@@ -31,9 +31,9 @@
                         <li><a href="#">Notification 4</a></li>
                         <li><a href="#">Another notification</a></li>
                       </ul>
-                </li>
+                </li> -->
 				<li>
-                    <a href="/seller/settings">
+                    <a href="/buyer/settings">
 						<i class="ti-settings"></i>
 						<p>Settings</p>
                     </a>

@@ -26,9 +26,11 @@
 
                                 @php($i=0)
                                     @foreach($users as $user)
-
                                     <tr>
                                         <td>
+                                        @if($messages[$i][0]->read ==1 && $messages[$i][0]->from!=Auth::user()->id)
+                                        <span class="newmsg">*</span>
+                                        @endif
                                             <a href="/seller/messages/{{$user->id}}">
                                                 <span class="username-row">{{$user->UserName}}</span>
                                                 <span class="message-row">{{$messages[$i][0]->message}}</span>  

@@ -92,7 +92,7 @@
     <script src="{{url('/')}}/assets/js/bootstrap-notify.js"></script>
 
     <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script> -->
 
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 	<script src="{{url('/')}}/assets/js/paper-dashboard.js"></script>
@@ -103,7 +103,7 @@
 	<script type="text/javascript">
     	$(document).ready(function(){
 
-            if (window.location.href=="{{url('/seller/dashboard')}}") {
+            if (window.location.href=="{{url('/seller/dashboard')}}" || window.location.href=="{{url('/buyer/dashboard')}}") {
                 demo.initChartist();
             }
 

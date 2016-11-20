@@ -33,7 +33,9 @@
 												<form id="sub" method="POST" action="/login" > 
 														@if(isset($id)) 
 														<input type="hidden" name="id" value="{{$id}}">
+														@if(isset($id2))
 														<input type="hidden" name="id2" value="{{$id2}}">
+														@endif
 
 														@endif
 														<input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -228,6 +228,10 @@ ul{
     line-height: 35px;
     color: rgba(0, 0, 0, 0.6);
     padding-left: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 70vw;
+    overflow: hidden;
 }
 .username-row{
     display: block;
@@ -240,15 +244,47 @@ ul{
 .messages-table tbody tr td a{
     color: inherit;
 }
+.all-messages{
+    max-height: 350px;
+    padding: 0 10px 0 10px;
+    overflow-y:scroll;
+}
 .from-me{
-    float: right;
+    margin-left: 40%;
+    text-align: right;
+    width: 60%;
+    display: inline-block;
+    background: green;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding-right: 20px;
+}
+.from-me1{
+    margin-top: 2px;
 }
 .from-other{
-    float: left;
+    text-align: left;
+    width: 60%;
+    display: inline-block;
+    background: red;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+.from-other1{
+    margin-top: 2px;
+}
+.from-me,.from-other{
+    min-height: 25px;
+    line-height: 25px;
+    word-break: break-all;
 }
 .sendmessageInput{
     width: 60%;
     display: inline-block;
+}
+.newmsg{
+    position: absolute;
 }
 
 

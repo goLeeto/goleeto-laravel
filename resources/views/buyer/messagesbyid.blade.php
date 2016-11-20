@@ -22,17 +22,29 @@
                         <div class="content table-responsive ">
                             <table class="table messages-table">
                                 <tbody>
-                                    @foreach($messages as $message)
                                     <tr>
                                         <td>
-                                            @if($message->from == $user->id)
-                                            <span class="from-other">{{$message->message}}</span>
-                                            @else
-                                            <span class="from-me">{{$message->message}}</span>
-                                            @endif
+                                            @php($i=0) 
+                                            @php($j=0)
+                                            <div class="all-messages">
+                                            @foreach($messages as $message)
+                                                
+                                                @if($message->from == $user->id)
+                                                <span class="from-other @if($i!=0) from-other1 @endif ">{{$message->message}}</span>
+                                                @php($i++) 
+                                                @php($j=0)
+                                                @else
+                                                <span class="from-me @if($j!=0) from-me1 @endif">{{$message->message}}</span>
+                                                
+                                                @php($j++)
+                                                @php($i=0)
+                                                @endif
+                                           
+                                            @endforeach
+                                            </div>
                                         </td>
                                     </tr>
-                                    @endforeach
+
                                     <tr>
                                         <td class="text-center">
                                             <form method="POST" action="/sendmessage/{{$user->id}}">

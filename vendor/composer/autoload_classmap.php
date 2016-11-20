@@ -10,6 +10,7 @@ return array(
     'CreateDiscountTable' => $baseDir . '/database/migrations/2016_10_19_092548_create_discount_table.php',
     'CreateFeatures' => $baseDir . '/database/migrations/2016_09_21_160036_create_features.php',
     'CreateMessages' => $baseDir . '/database/migrations/2016_09_21_160130_create_messages.php',
+    'CreateNotificationsTable' => $baseDir . '/database/migrations/2016_11_02_115517_create_notifications_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateProductCategory' => $baseDir . '/database/migrations/2016_09_21_155947_create_productCategory.php',
     'CreateProductComments' => $baseDir . '/database/migrations/2016_09_21_160118_create_productComments.php',
