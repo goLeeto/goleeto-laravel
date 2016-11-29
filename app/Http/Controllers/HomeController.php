@@ -25,10 +25,22 @@ class HomeController extends Controller
             $items = '';
         }
 
+        //slider 1
 
+        $slider1 = \DB::table('products')
+                                        ->leftJoin('sales','products.id','=','sales.productId')
+                                        ->join('productImages','products.id','=','productImages.productId')
+                                        ->groupBy('products.id','productImages.path')
+                                        ->limit(5)
+                                        ->select('productImages.path')
+                                        ->get();
+
+        //end slider 1
+
+        //begin slider 2
         $categories = App\Category::all();
 
-
+        //per cdo kategori 4 produkte
         foreach ($categories as $category) {
             $products[] = \DB::table('products')
                                             ->leftJoin('sales','products.id','=','sales.productId')
@@ -40,7 +52,7 @@ class HomeController extends Controller
                                             ->get();
         }
 
-
+        //per cdo product marrim nje foto
         foreach ($products as $category) {
             $photo = array();
             foreach ($category as $product) {
@@ -53,12 +65,15 @@ class HomeController extends Controller
             $photos[] = $photo;
             unset($photo);
         }
+        //end slider 2
 
         return view('home',[
             'className' => 'home',
             'items' => $items,
+            'slider1' =>$slider1,
+            'categories' => $categories,
             'products' => $products,
-
+            'photos' => $photos
         ]);
     }
 
